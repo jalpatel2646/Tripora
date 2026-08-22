@@ -1,0 +1,403 @@
+/* BuildItinerary.css — Screen 5 Itinerary Builder Page Styles */
+
+:root {
+  --primary-purple:  #B8C0FF;
+  --light-purple:    #E7D8FF;
+  --dark-text:       #252238;
+  --muted-text:      #6B6880;
+  --white:           #FFFFFF;
+  --bg-light:        #F9F8FF;
+  --error:           #EF4444;
+  --error-bg:        #FEF2F2;
+  
+  --radius-xl:       28px;
+  --radius-lg:       20px;
+  --radius-md:       12px;
+  --radius-sm:       8px;
+  
+  --transition:      0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-sm:       0 4px 16px rgba(37, 34, 56, 0.04);
+  --shadow-md:       0 8px 24px rgba(184, 192, 255, 0.18);
+  --shadow-hover:    0 12px 30px rgba(184, 192, 255, 0.26);
+}
+
+.iti-page-container {
+  min-height: 100vh;
+  background-color: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+}
+
+.iti-main {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 32px 0 64px;
+}
+
+/* ── Main Container (Centered Card) ── */
+.iti-card-wrapper {
+  width: 100%;
+  max-width: 800px;
+  background-color: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  border: 1.5px solid var(--light-purple);
+  padding: 40px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ── Header ── */
+.iti-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1.5px solid #F0EDFF;
+  padding-bottom: 20px;
+}
+
+.iti-page-title {
+  font-size: 2rem;
+  font-weight: 850;
+  color: var(--dark-text);
+  letter-spacing: -0.8px;
+  margin-bottom: 4px;
+}
+
+.iti-page-subtitle {
+  font-size: 0.95rem;
+  color: var(--muted-text);
+}
+
+.iti-header-icon {
+  font-size: 2.2rem;
+  opacity: 0.85;
+}
+
+/* ── Section Cards List ── */
+.iti-sections-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Section Card ── */
+.iti-section-card {
+  background-color: var(--white);
+  border: 1.5px solid var(--light-purple);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.iti-section-card:hover {
+  border-color: var(--primary-purple);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Card Header inside Section Card */
+.iti-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #F0EDFF;
+  padding-bottom: 12px;
+}
+
+.iti-badge-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.iti-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--primary-purple);
+  color: var(--dark-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.iti-section-title {
+  font-size: 1.05rem;
+  font-weight: 750;
+  color: var(--dark-text);
+}
+
+/* Delete button */
+.iti-delete-btn {
+  background-color: rgba(239, 68, 68, 0.08);
+  border: none;
+  color: var(--error);
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.iti-delete-btn:hover {
+  background-color: rgba(239, 68, 68, 0.15);
+  transform: translateY(-1px);
+}
+
+/* ── Section Card Grid Layout ── */
+.iti-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+}
+
+.iti-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Span helpers for the grid */
+.iti-card-grid .span-2 {
+  grid-column: span 2;
+}
+
+.iti-label {
+  font-size: 0.80rem;
+  font-weight: 700;
+  color: var(--dark-text);
+  letter-spacing: 0.2px;
+}
+
+/* Controls */
+.iti-input,
+.iti-select,
+.iti-textarea {
+  width: 100%;
+  border: 1.5px solid var(--light-purple);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.88rem;
+  color: var(--dark-text);
+  background-color: var(--bg-light);
+  outline: none;
+  transition: border-color var(--transition), background-color var(--transition), box-shadow var(--transition);
+}
+
+.iti-input {
+  height: 40px;
+  padding: 0 12px;
+}
+
+.iti-select {
+  height: 40px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.iti-textarea {
+  padding: 10px 12px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.iti-input:hover,
+.iti-select:hover,
+.iti-textarea:hover {
+  border-color: var(--primary-purple);
+}
+
+.iti-input:focus,
+.iti-select:focus,
+.iti-textarea:focus {
+  border-color: #6C5CE7;
+  background-color: var(--white);
+  box-shadow: 0 0 0 3px rgba(184, 192, 255, 0.25);
+}
+
+/* Date range specific elements */
+.iti-date-range-inputs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.iti-date-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.iti-input-date {
+  cursor: pointer;
+}
+
+.iti-date-separator {
+  color: var(--muted-text);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Budget specific elements */
+.iti-budget-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.iti-currency-symbol {
+  position: absolute;
+  left: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--muted-text);
+  pointer-events: none;
+}
+
+.iti-input-budget {
+  padding-left: 28px;
+}
+
+/* Form error states */
+.iti-form-group.has-error .iti-input,
+.iti-form-group.has-error .iti-select,
+.iti-form-group.has-error .iti-textarea,
+.iti-date-wrapper.has-error .iti-input {
+  border-color: var(--error);
+  background-color: var(--error-bg);
+}
+
+.iti-error-text {
+  font-size: 0.74rem;
+  color: var(--error);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* ── Add Another Section Button ── */
+.iti-add-section-btn {
+  width: 100%;
+  height: 52px;
+  background-color: var(--primary-purple);
+  color: var(--dark-text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 750;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(184, 192, 255, 0.4);
+  transition: transform var(--transition), background-color var(--transition), box-shadow var(--transition);
+}
+
+.iti-add-section-btn:hover {
+  background-color: #A3ADFF;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.iti-add-section-btn:active {
+  transform: translateY(0);
+}
+
+/* ── Save Row ── */
+.iti-save-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  border-top: 1.5px solid #F0EDFF;
+  padding-top: 28px;
+}
+
+.iti-save-itinerary-btn {
+  width: 100%;
+  max-width: 320px;
+  height: 48px;
+  background-color: var(--light-purple);
+  color: var(--dark-text);
+  font-family: inherit;
+  font-size: 0.93rem;
+  font-weight: 750;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform var(--transition), background-color var(--transition), box-shadow var(--transition);
+}
+
+.iti-save-itinerary-btn:hover {
+  background-color: #D6C2FF;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(231, 216, 255, 0.45);
+}
+
+.iti-save-itinerary-btn:active {
+  transform: translateY(0);
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE DESIGN
+   ══════════════════════════════════════════════════════════ */
+@media (min-width: 769px) {
+  .iti-card-grid .span-2-desktop {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .iti-main {
+    padding: 20px 0 48px;
+  }
+  
+  .iti-card-wrapper {
+    padding: 28px 24px;
+    border-radius: var(--radius-lg);
+    gap: 20px;
+  }
+
+  .iti-page-title {
+    font-size: 1.6rem;
+  }
+
+  .iti-section-card {
+    padding: 20px 18px;
+    border-radius: var(--radius-md);
+  }
+
+  .iti-card-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .iti-card-grid .span-2 {
+    grid-column: span 1;
+  }
+
+  .iti-date-range-inputs {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .iti-date-separator {
+    text-align: center;
+    display: none; /* Hide arrow separator when stacked */
+  }
+
+  .iti-save-itinerary-btn {
+    max-width: 100%;
+  }
+}

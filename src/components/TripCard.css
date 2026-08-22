@@ -1,0 +1,121 @@
+/* TripCard.css */
+.trip-card {
+  flex: 1;
+  background-color: var(--white, #FFFFFF);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(37, 34, 56, 0.04);
+  border: 1.5px solid rgba(231, 216, 255, 0.4);
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  display: flex;
+  flex-direction: column;
+  outline: none;
+}
+
+.trip-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(184, 192, 255, 0.3);
+  border-color: #B8C0FF;
+}
+
+.trip-card:focus-visible {
+  box-shadow: 0 0 0 3px rgba(184, 192, 255, 0.6);
+}
+
+/* Image wrapper */
+.trip-image-wrap {
+  width: 100%;
+  height: 160px;
+  position: relative;
+  overflow: hidden;
+}
+
+.trip-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.trip-card:hover .trip-image {
+  transform: scale(1.04);
+}
+
+/* Badge (status) using light purple E7D8FF */
+.trip-status-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background-color: #E7D8FF;
+  color: #252238;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 30px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(37, 34, 56, 0.08);
+}
+
+/* Info container */
+.trip-details {
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.trip-main-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.trip-title {
+  font-size: 1.12rem;
+  font-weight: 750;
+  color: #252238;
+  letter-spacing: -0.2px;
+}
+
+.trip-dest {
+  font-size: 0.84rem;
+  color: #6B6880;
+}
+
+/* Metadata row */
+.trip-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-top: 1px solid #F0EDFF;
+  padding-top: 14px;
+  margin-top: 2px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6B6880;
+}
+
+.meta-icon {
+  font-size: 0.88rem;
+  opacity: 0.85;
+}
+
+.meta-text {
+  font-size: 0.80rem;
+  font-weight: 500;
+}
+
+/* Responsive adjustments inside row wrapper */
+@media (max-width: 768px) {
+  .trip-image-wrap {
+    height: 140px;
+  }
+}
