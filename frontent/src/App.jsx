@@ -16,6 +16,7 @@ function RootRoute() {
 import Community from './pages/Community';
 import CalendarView from './pages/CalendarView';
 import AdminDashboard from './pages/AdminDashboard';
+import AITripPlanner from './pages/AITripPlanner';
 import Landing from './pages/Landing';
 
 // Client-side wrappers to preserve SPA navigation
@@ -57,6 +58,9 @@ function App() {
 
         {/* Admin Panel / Analytics Dashboard */}
         <Route path="/admin" element={<AdminDashboard />} />
+
+        {/* AI Trip Planner Screen */}
+        <Route path="/ai-planner" element={<AITripPlanner />} />
 
         {/* Auth routes */}
         <Route path="/login" element={<LoginWrapper />} />

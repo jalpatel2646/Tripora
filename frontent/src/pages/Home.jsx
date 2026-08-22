@@ -100,13 +100,22 @@ export default function Home() {
               <p className="banner-subtitle">
                 Plan unforgettable trips, discover new destinations, and keep everything organized in one place.
               </p>
-              <button
-                type="button"
-                className="banner-btn"
-                onClick={handleCreateTripClick}
-              >
-                Start Planning
-              </button>
+              <div className="banner-btn-group">
+                <button
+                  type="button"
+                  className="banner-btn"
+                  onClick={handleCreateTripClick}
+                >
+                  Plan Manually
+                </button>
+                <button
+                  type="button"
+                  className="banner-btn ai-btn"
+                  onClick={() => navigate('/ai-planner')}
+                >
+                  Plan with AI ✨
+                </button>
+              </div>
             </div>
           </section>
 
@@ -219,9 +228,17 @@ export default function Home() {
                   type="button"
                   className="plan-trip-btn"
                   onClick={handleCreateTripClick}
-                  aria-label="Create a new trip plan"
+                  aria-label="Create a new trip plan manually"
                 >
-                  <span className="btn-icon-plus" aria-hidden="true">+</span> Plan a Trip
+                  Plan Manually
+                </button>
+                <button
+                  type="button"
+                  className="plan-trip-btn ai-btn"
+                  onClick={() => navigate('/ai-planner')}
+                  aria-label="Create a new trip plan with AI"
+                >
+                  Plan with AI ✨
                 </button>
               </div>
             </header>

@@ -172,13 +172,22 @@ export default function MyTrips() {
               <h1 className="page-title">My Trips</h1>
               <p className="page-subtitle">View and manage all your journeys in one place.</p>
             </div>
-            <button
-              type="button"
-              className="plan-new-trip-btn"
-              onClick={() => navigate('/create-trip')}
-            >
-              + Plan New Trip
-            </button>
+            <div className="plan-new-trip-btn-group">
+              <button
+                type="button"
+                className="plan-new-trip-btn"
+                onClick={() => navigate('/create-trip')}
+              >
+                Plan Manually
+              </button>
+              <button
+                type="button"
+                className="plan-new-trip-btn ai-btn"
+                onClick={() => navigate('/ai-planner')}
+              >
+                Plan with AI ✨
+              </button>
+            </div>
           </header>
 
           {/* ── Search and Filter Controls ── */}

@@ -68,6 +68,11 @@
   color: var(--muted-text);
 }
 
+.plan-new-trip-btn-group {
+  display: flex;
+  gap: 10px;
+}
+
 /* Plan New Trip Button */
 .plan-new-trip-btn {
   background-color: var(--primary-purple);
@@ -88,6 +93,17 @@
   background-color: #A3ADFF;
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
+}
+
+.plan-new-trip-btn.ai-btn {
+  background-color: var(--light-purple);
+  border: 1px solid var(--primary-purple);
+  box-shadow: 0 4px 16px rgba(231, 216, 255, 0.35);
+}
+
+.plan-new-trip-btn.ai-btn:hover {
+  background-color: #dcd0f7;
+  box-shadow: 0 8px 24px rgba(231, 216, 255, 0.5);
 }
 
 /* ── Trips Sections Wrapper ── */

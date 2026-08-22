@@ -132,8 +132,14 @@
   margin: 0;
 }
 
+.banner-btn-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
 .banner-btn {
-  margin-top: 6px;
   background-color: var(--primary);
   color: var(--text-primary);
   font-family: inherit;
@@ -163,6 +169,17 @@
 
 .banner-btn:active {
   transform: translateY(0);
+}
+
+.banner-btn.ai-btn {
+  background-color: var(--secondary);
+  border: 1px solid var(--primary);
+  box-shadow: 0 4px 16px rgba(231, 216, 255, 0.35);
+}
+
+.banner-btn.ai-btn:hover {
+  background-color: #dcd0f7;
+  box-shadow: 0 8px 24px rgba(231, 216, 255, 0.5);
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -375,7 +392,8 @@
 
 /* Button wrapper now lives inside .section-header flex row */
 .plan-trip-btn-wrapper {
-  /* no positioning — inline in header */
+  display: flex;
+  gap: 10px;
 }
 
 .plan-trip-btn {
@@ -407,6 +425,17 @@
 
 .plan-trip-btn:active {
   transform: translateY(0);
+}
+
+.plan-trip-btn.ai-btn {
+  background-color: var(--secondary);
+  border: 1px solid var(--primary);
+  box-shadow: 0 2px 10px rgba(231, 216, 255, 0.3);
+}
+
+.plan-trip-btn.ai-btn:hover {
+  background-color: #dcd0f7;
+  box-shadow: 0 6px 20px rgba(231, 216, 255, 0.45);
 }
 
 .btn-icon-plus {
