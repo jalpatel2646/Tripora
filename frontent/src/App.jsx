@@ -8,9 +8,15 @@ import MyTrips from './pages/MyTrips';
 import Profile from './pages/Profile';
 import Explore from './pages/Explore';
 import ItineraryView from './pages/ItineraryView';
+
+function RootRoute() {
+  const hasSession = Boolean(localStorage.getItem('tripora_access_token'));
+  return hasSession ? <Home /> : <Navigate to="/login" replace />;
+}
 import Community from './pages/Community';
 import CalendarView from './pages/CalendarView';
 import AdminDashboard from './pages/AdminDashboard';
+import Landing from './pages/Landing';
 
 // Client-side wrappers to preserve SPA navigation
 function LoginWrapper() {
@@ -28,7 +34,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Main Dashboard / Home Screen */}
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Landing />} />
+        <Route path="/home" element={<Home />} />
         
         {/* User Trips Listing Screen */}
         <Route path="/my-trips" element={<MyTrips />} />

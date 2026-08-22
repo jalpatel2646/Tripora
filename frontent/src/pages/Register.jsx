@@ -218,8 +218,12 @@ export default function Register({ onLogin }) {
     setErrors(allErrors);
     if (!Object.values(allErrors).some(Boolean)) {
       setIsSubmitting(true); setSubmitError('');
-      try { const result = await api.register({ firstName: form.firstName, lastName: form.lastName, email: form.email, password: form.password, phone: form.phone, city: form.city, country: form.country, bio: form.bio }); saveSession(result.data); navigate('/'); }
-      catch (error) { setSubmitError(error.message); }
+      try { const result = await api.register({ firstName: form.firstName, lastName: form.lastName, email: form.email, password: form.password, phone: form.phone, city: form.city, country: form.country, bio: form.bio }); saveSession(result.data); navigate('/home'); }
+      catch (error) {
+        setSubmitError(error.message?.toLowerCase().includes('already registered')
+          ? 'Your account already registered please login'
+          : error.message);
+      }
       finally { setIsSubmitting(false); }
       return;
       alert('Registration successful! 🎉 (UI demo only)');
