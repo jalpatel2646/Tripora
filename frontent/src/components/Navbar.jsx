@@ -12,8 +12,7 @@ export default function Navbar() {
       <div className="navbar-container">
         {/* Logo */}
         <Link to="/" className="navbar-logo" aria-label="Tripora Home">
-          <span className="logo-icon" aria-hidden="true">✈</span>
-          <span className="logo-text">Tripora</span>
+          <img src="/logo.png" alt="Tripora" className="navbar-logo-img" />
         </Link>
 
         {/* Links */}
@@ -35,9 +34,6 @@ export default function Navbar() {
           </Link>
           <Link to="/admin" className={`menu-item${isActive('/admin') ? ' is-active' : ''}`}>
             Admin
-          </Link>
-          <Link to="/profile" className={`menu-item${isActive('/profile') ? ' is-active' : ''}`}>
-            Profile
           </Link>
         </div>
 
