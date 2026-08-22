@@ -1,4 +1,4 @@
-# GlobeTrotter Backend
+# Backend
 
 NestJS REST API with MongoDB/Mongoose. API routes use `/api/v1`; Swagger is at `/api/docs`.
 
