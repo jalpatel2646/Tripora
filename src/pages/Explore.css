@@ -1,0 +1,195 @@
+/* Explore.css — Screen 8 Explore Cities & Activities Styles */
+
+:root {
+  --primary-purple:  #B8C0FF;
+  --light-purple:    #E7D8FF;
+  --dark-text:       #252238;
+  --muted-text:      #6B6880;
+  --white:           #FFFFFF;
+  --bg-light:        #F9F8FF;
+  
+  --radius-lg:       20px;
+  --radius-md:       12px;
+  --radius-sm:       8px;
+  
+  --transition:      0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-sm:       0 4px 16px rgba(37, 34, 56, 0.04);
+  --shadow-md:       0 8px 24px rgba(184, 192, 255, 0.20);
+}
+
+.explore-page-container {
+  min-height: 100vh;
+  background-color: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+}
+
+.explore-main {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 36px 0 64px;
+}
+
+.explore-layout-wrapper {
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Page Header ── */
+.explore-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.explore-title {
+  font-size: 2.2rem;
+  font-weight: 850;
+  color: var(--dark-text);
+  letter-spacing: -0.8px;
+}
+
+.explore-subtitle {
+  font-size: 0.95rem;
+  color: var(--muted-text);
+}
+
+/* ── Toggle Tabs Bar ── */
+.explore-tabs-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: rgba(231, 216, 255, 0.4);
+  padding: 6px;
+  border-radius: 14px;
+  width: fit-content;
+}
+
+.explore-tab {
+  background: none;
+  border: none;
+  color: var(--muted-text);
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 750;
+  padding: 10px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition), box-shadow var(--transition);
+}
+
+.explore-tab.is-active {
+  background-color: var(--primary-purple);
+  color: var(--dark-text);
+  box-shadow: 0 4px 14px rgba(184, 192, 255, 0.45);
+}
+
+/* ── Results Header ── */
+.explore-results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.results-title {
+  font-size: 1.35rem;
+  font-weight: 850;
+  color: var(--dark-text);
+  letter-spacing: -0.4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.results-count {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--muted-text);
+}
+
+/* Cards List */
+.results-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Empty Search State ── */
+.explore-empty-state {
+  background-color: var(--white);
+  border: 1.5px solid var(--light-purple);
+  border-radius: var(--radius-lg);
+  padding: 56px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.empty-state-icon {
+  font-size: 3rem;
+  margin-bottom: 14px;
+  opacity: 0.8;
+}
+
+.empty-state-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--dark-text);
+  margin-bottom: 6px;
+}
+
+.empty-state-subtitle {
+  font-size: 0.92rem;
+  color: var(--muted-text);
+  margin-bottom: 20px;
+}
+
+.empty-state-reset-btn {
+  background-color: var(--primary-purple);
+  color: var(--dark-text);
+  font-family: inherit;
+  font-size: 0.90rem;
+  font-weight: 750;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(184, 192, 255, 0.4);
+  transition: transform var(--transition), background-color var(--transition);
+}
+
+.empty-state-reset-btn:hover {
+  background-color: #A3ADFF;
+  transform: translateY(-2px);
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .explore-main {
+    padding: 20px 0 48px;
+  }
+  .explore-layout-wrapper {
+    gap: 20px;
+    padding: 0 16px;
+  }
+  .explore-title {
+    font-size: 1.7rem;
+  }
+  .explore-tabs-bar {
+    width: 100%;
+  }
+  .explore-tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px 12px;
+  }
+}

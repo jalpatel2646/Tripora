@@ -1,0 +1,130 @@
+/* SearchControls.css */
+.search-controls-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+/* Search bar */
+.sc-search-bar {
+  flex: 1;
+  min-width: 320px;
+  height: 48px;
+  background-color: var(--white, #FFFFFF);
+  border: 1.5px solid var(--light-purple, #E7D8FF);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(37, 34, 56, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sc-search-bar:focus-within {
+  border-color: var(--primary-purple, #B8C0FF);
+  box-shadow: 0 8px 24px rgba(184, 192, 255, 0.20);
+}
+
+.sc-search-icon {
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+.sc-search-input {
+  flex: 1;
+  border: none;
+  background: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: var(--dark-text, #252238);
+}
+
+.sc-search-input::placeholder {
+  color: var(--muted-text, #6B6880);
+  opacity: 0.7;
+}
+
+.sc-clear-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted-text, #6B6880);
+  font-size: 0.85rem;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sc-clear-btn:hover {
+  background-color: var(--light-purple, #E7D8FF);
+  color: var(--dark-text, #252238);
+}
+
+/* Dropdowns Group */
+.sc-dropdowns-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.sc-control-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--white, #FFFFFF);
+  border: 1.5px solid var(--light-purple, #E7D8FF);
+  border-radius: 12px;
+  padding: 0 14px;
+  height: 44px;
+  box-shadow: 0 2px 8px rgba(37, 34, 56, 0.04);
+  transition: border-color 0.2s ease;
+}
+
+.sc-control-box:hover {
+  border-color: var(--primary-purple, #B8C0FF);
+}
+
+.sc-label {
+  font-size: 0.80rem;
+  font-weight: 700;
+  color: var(--muted-text, #6B6880);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.sc-select {
+  border: none;
+  background: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dark-text, #252238);
+  cursor: pointer;
+  padding-right: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sc-search-bar {
+    min-width: 100%;
+  }
+  .sc-dropdowns-group {
+    width: 100%;
+    gap: 10px;
+  }
+  .sc-control-box {
+    flex: 1;
+    min-width: 120px;
+    height: 40px;
+  }
+}

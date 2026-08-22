@@ -1,0 +1,192 @@
+/* ItineraryView.css — Screen 9 Itinerary View with Budget Section Styles */
+
+:root {
+  --primary-purple:  #B8C0FF;
+  --light-purple:    #E7D8FF;
+  --dark-text:       #252238;
+  --muted-text:      #6B6880;
+  --white:           #FFFFFF;
+  --bg-light:        #F9F8FF;
+  
+  --radius-xl:       28px;
+  --radius-lg:       20px;
+  --radius-md:       12px;
+  --radius-sm:       8px;
+  
+  --transition:      0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-sm:       0 4px 16px rgba(37, 34, 56, 0.04);
+  --shadow-md:       0 8px 24px rgba(184, 192, 255, 0.18);
+}
+
+.iv-page-container {
+  min-height: 100vh;
+  background-color: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+}
+
+.iv-main {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 32px 0 64px;
+}
+
+.iv-layout-wrapper {
+  width: 100%;
+  max-width: 1050px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ── Itinerary Header ── */
+.iv-trip-header {
+  background-color: var(--white);
+  border: 1.5px solid var(--light-purple);
+  border-radius: var(--radius-lg);
+  padding: 24px 32px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.iv-header-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.iv-trip-title {
+  font-size: 2rem;
+  font-weight: 850;
+  color: var(--dark-text);
+  letter-spacing: -0.6px;
+}
+
+.iv-trip-route {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--muted-text);
+}
+
+.iv-header-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  border-top: 1px solid #F0EDFF;
+  padding-top: 12px;
+}
+
+.iv-meta-badge {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--dark-text);
+  background-color: var(--bg-light);
+  border: 1px solid var(--light-purple);
+  padding: 6px 14px;
+  border-radius: 8px;
+}
+
+.iv-budget-badge {
+  background-color: rgba(184, 192, 255, 0.25);
+  border-color: var(--primary-purple);
+  font-weight: 750;
+}
+
+/* ── Main Itinerary Area ── */
+.iv-main-itinerary-area {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.iv-columns-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--muted-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.iv-days-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Empty State */
+.iv-empty-state {
+  background-color: var(--white);
+  border: 1.5px solid var(--light-purple);
+  border-radius: var(--radius-lg);
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.empty-icon {
+  font-size: 2.5rem;
+}
+
+.iv-reset-btn {
+  background-color: var(--primary-purple);
+  color: var(--dark-text);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 750;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(184, 192, 255, 0.4);
+  margin-top: 8px;
+}
+
+/* Calendar View Placeholder */
+.iv-calendar-placeholder {
+  background-color: var(--white);
+  border: 1.5px dashed var(--primary-purple);
+  border-radius: var(--radius-lg);
+  padding: 64px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.cal-icon {
+  font-size: 3.5rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  .iv-main {
+    padding: 20px 0 48px;
+  }
+  .iv-layout-wrapper {
+    gap: 20px;
+    padding: 0 16px;
+  }
+  .iv-trip-header {
+    padding: 20px;
+  }
+  .iv-trip-title {
+    font-size: 1.6rem;
+  }
+  .iv-columns-header {
+    display: none;
+  }
+}

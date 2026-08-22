@@ -1,0 +1,108 @@
+/* ItineraryDay.css */
+.itinerary-day-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--white, #FFFFFF);
+  border: 1.5px solid var(--light-purple, #E7D8FF);
+  border-radius: 20px;
+  padding: 24px 28px;
+  box-shadow: 0 4px 16px rgba(37, 34, 56, 0.04);
+}
+
+.id-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1.5px solid #F0EDFF;
+  padding-bottom: 14px;
+}
+
+.id-badge-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.id-badge {
+  background-color: var(--primary-purple, #B8C0FF);
+  color: var(--dark-text, #252238);
+  font-size: 0.90rem;
+  font-weight: 850;
+  padding: 6px 16px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+}
+
+.id-sub-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.id-date {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--dark-text, #252238);
+}
+
+.id-city {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--muted-text, #6B6880);
+}
+
+/* Timeline */
+.id-activities-timeline {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Footer Total */
+.id-footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1.5px solid #F0EDFF;
+  padding-top: 14px;
+}
+
+.id-total-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--bg-light, #F9F8FF);
+  border: 1px solid var(--light-purple, #E7D8FF);
+  padding: 8px 18px;
+  border-radius: 12px;
+}
+
+.id-total-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted-text, #6B6880);
+}
+
+.id-total-amount {
+  font-size: 1.05rem;
+  font-weight: 850;
+  color: var(--dark-text, #252238);
+}
+
+@media (max-width: 640px) {
+  .itinerary-day-section {
+    padding: 18px 16px;
+  }
+  .id-sub-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  .id-footer {
+    justify-content: stretch;
+  }
+  .id-total-box {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

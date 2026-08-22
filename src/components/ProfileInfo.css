@@ -1,0 +1,275 @@
+/* ProfileInfo.css */
+.profile-info-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 36px;
+  padding-bottom: 32px;
+  border-bottom: 1.5px solid #F0EDFF;
+}
+
+/* ── Profile photo ── */
+.pi-photo-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.pi-photo-circle-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.pi-photo-circle {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  border: 3px solid var(--primary-purple, #B8C0FF);
+  background-color: var(--light-purple, #E7D8FF);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(184, 192, 255, 0.3);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pi-photo-circle:hover {
+  transform: scale(1.04);
+  border-color: #6C5CE7;
+  box-shadow: 0 8px 24px rgba(108, 92, 231, 0.25);
+}
+
+.pi-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pi-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(37, 34, 56, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-radius: 50%;
+}
+
+.pi-photo-circle:hover .pi-photo-overlay {
+  opacity: 1;
+}
+
+.pi-file-input {
+  display: none;
+}
+
+.pi-photo-caption {
+  font-size: 0.72rem;
+  color: var(--muted-text, #6B6880);
+  font-weight: 500;
+}
+
+/* ── Details Wrapper ── */
+.pi-details-wrapper {
+  flex: 1;
+}
+
+/* View Mode */
+.pi-view-mode {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pi-view-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.pi-user-name {
+  font-size: 1.8rem;
+  font-weight: 850;
+  color: var(--dark-text, #252238);
+  letter-spacing: -0.6px;
+  line-height: 1.15;
+}
+
+.pi-user-location {
+  font-size: 0.90rem;
+  color: var(--muted-text, #6B6880);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.pi-edit-btn {
+  background-color: var(--light-purple, #E7D8FF);
+  color: var(--dark-text, #252238);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 750;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(184, 192, 255, 0.3);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.pi-edit-btn:hover {
+  background-color: var(--primary-purple, #B8C0FF);
+  transform: translateY(-1px);
+}
+
+.pi-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+  background-color: var(--bg-light, #F9F8FF);
+  border: 1px solid var(--light-purple, #E7D8FF);
+  border-radius: 14px;
+  padding: 16px 20px;
+}
+
+.pi-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+}
+
+.pi-contact-label {
+  font-weight: 700;
+  color: var(--muted-text, #6B6880);
+  min-width: 60px;
+}
+
+.pi-contact-value {
+  color: var(--dark-text, #252238);
+  font-weight: 600;
+}
+
+/* Edit Mode */
+.pi-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--bg-light, #F9F8FF);
+  border: 1.5px solid var(--light-purple, #E7D8FF);
+  border-radius: 16px;
+  padding: 20px 24px;
+}
+
+.pi-edit-form-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--dark-text, #252238);
+}
+
+.pi-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 20px;
+}
+
+.pi-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pi-form-label {
+  font-size: 0.78rem;
+  font-weight: 750;
+  color: var(--dark-text, #252238);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.pi-form-input {
+  width: 100%;
+  height: 38px;
+  padding: 0 12px;
+  border: 1.5px solid var(--light-purple, #E7D8FF);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  color: var(--dark-text, #252238);
+  background-color: #FFFFFF;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.pi-form-input:focus {
+  border-color: #6C5CE7;
+}
+
+.pi-form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.pi-btn-cancel {
+  background-color: #FFFFFF;
+  border: 1px solid var(--light-purple, #E7D8FF);
+  color: var(--muted-text, #6B6880);
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.pi-btn-save {
+  background-color: var(--primary-purple, #B8C0FF);
+  color: var(--dark-text, #252238);
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 750;
+  border: none;
+  padding: 8px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(184, 192, 255, 0.4);
+}
+
+.pi-btn-save:hover {
+  background-color: #A3ADFF;
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .profile-info-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .pi-view-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .pi-edit-btn {
+    width: 100%;
+    text-align: center;
+  }
+  .pi-contact-grid,
+  .pi-form-grid {
+    grid-template-columns: 1fr;
+  }
+}

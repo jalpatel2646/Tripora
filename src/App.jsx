@@ -5,6 +5,9 @@ import Home from './pages/Home';
 import CreateTrip from './pages/CreateTrip';
 import BuildItinerary from './pages/BuildItinerary';
 import MyTrips from './pages/MyTrips';
+import Profile from './pages/Profile';
+import Explore from './pages/Explore';
+import ItineraryView from './pages/ItineraryView';
 
 // Client-side wrappers to preserve SPA navigation
 function LoginWrapper() {
@@ -26,6 +29,15 @@ function App() {
         
         {/* User Trips Listing Screen */}
         <Route path="/my-trips" element={<MyTrips />} />
+
+        {/* Explore Cities & Activities Screen */}
+        <Route path="/explore" element={<Explore />} />
+
+        {/* User Profile Screen */}
+        <Route path="/profile" element={<Profile />} />
+
+        {/* Itinerary View Screen with Budget Section */}
+        <Route path="/itinerary-view" element={<ItineraryView />} />
 
         {/* Auth routes */}
         <Route path="/login" element={<LoginWrapper />} />

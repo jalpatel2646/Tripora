@@ -1,0 +1,119 @@
+/* ProfileTripCard.css */
+.pt-card {
+  background-color: var(--white, #FFFFFF);
+  border: 1.5px solid var(--light-purple, #E7D8FF);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(37, 34, 56, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.pt-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(184, 192, 255, 0.28);
+  border-color: var(--primary-purple, #B8C0FF);
+}
+
+.pt-card-image-wrap {
+  width: 100%;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+  background-color: #F0EDFF;
+}
+
+.pt-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.pt-card:hover .pt-card-img {
+  transform: scale(1.05);
+}
+
+.pt-card-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.70rem;
+  font-weight: 750;
+  padding: 5px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 8px rgba(37, 34, 56, 0.08);
+}
+
+.badge-upcoming,
+.badge-preplanned {
+  background-color: #E7D8FF !important;
+  color: #252238 !important;
+}
+
+.badge-completed {
+  background-color: #F0EDFF !important;
+  color: #6B6880 !important;
+  border: 1px solid #E5E7EB;
+}
+
+.badge-ongoing {
+  background-color: #B8C0FF !important;
+  color: #252238 !important;
+}
+
+.pt-card-body {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.pt-card-title {
+  font-size: 1.05rem;
+  font-weight: 750;
+  color: var(--dark-text, #252238);
+  letter-spacing: -0.2px;
+}
+
+.pt-card-dest {
+  font-size: 0.84rem;
+  color: var(--muted-text, #6B6880);
+}
+
+.pt-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--muted-text, #6B6880);
+  margin-top: 2px;
+  padding-top: 8px;
+  border-top: 1px solid #F0EDFF;
+}
+
+.pt-card-view-btn {
+  width: 100%;
+  height: 38px;
+  margin-top: 6px;
+  background-color: var(--primary-purple, #B8C0FF);
+  color: var(--dark-text, #252238);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(184, 192, 255, 0.35);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.pt-card-view-btn:hover {
+  background-color: #A3ADFF;
+  transform: translateY(-1px);
+}

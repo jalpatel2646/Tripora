@@ -134,7 +134,7 @@ export default function MyTrips() {
 
   // Handlers
   const handleViewTrip = (id) => {
-    navigate(`/build-itinerary`);
+    navigate(`/itinerary-view`);
   };
 
   const handleEditTrip = (id) => {
