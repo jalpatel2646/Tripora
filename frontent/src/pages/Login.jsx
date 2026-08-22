@@ -141,7 +141,7 @@ export default function Login({ onRegister }) {
     setTouched({ email: true, password: true });
     if (!eErr && !pErr) {
       setIsSubmitting(true); setSubmitError('');
-      try { const result = await api.login({ email, password }); saveSession(result.data); navigate('/'); }
+      try { const result = await api.login({ email, password }); saveSession(result.data); navigate('/Home'); }
       catch (error) { setSubmitError(error.message); }
       finally { setIsSubmitting(false); }
       return;

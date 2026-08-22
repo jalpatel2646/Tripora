@@ -6,10 +6,21 @@ NestJS REST API with MongoDB/Mongoose. API routes use `/api/v1`; Swagger is at `
 
 ```powershell
 cd backend
-Copy-Item .env.example .env
+# Create backend/.env locally and add your private MongoDB/JWT values.
 npm install --no-audit --no-fund
 docker compose up -d mongo
 npm run start:dev
+```
+
+Required local variables in `backend/.env`:
+
+```text
+PORT=5000
+MONGODB_URI=your-private-mongodb-uri
+JWT_SECRET=your-private-access-secret
+JWT_REFRESH_SECRET=your-private-refresh-secret
+FRONTEND_URL=http://localhost:5173
+PYTHON_SERVICE_URL=http://localhost:8000
 ```
 
 The dependency download command is:

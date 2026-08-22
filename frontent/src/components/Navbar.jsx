@@ -11,13 +11,15 @@ export default function Navbar() {
     <nav className="tp-navbar" role="navigation" aria-label="Main Navigation">
       <div className="navbar-container">
         {/* Logo */}
-        <Link to="/" className="navbar-logo" aria-label="Tripora Home">
-          <img src="/logo.png" alt="Tripora" className="navbar-logo-img" />
+        <Link to="/home" className="navbar-logo" aria-label="Tripora Home">
+          <span className="logo-icon" aria-hidden="true">✈</span>
+          <span className="logo-text">Tripora</span>
+
         </Link>
 
         {/* Links */}
         <div className="navbar-menu">
-          <Link to="/" className={`menu-item${isActive('/') ? ' is-active' : ''}`}>
+          <Link to="/home" className={`menu-item${isActive('/home') ? ' is-active' : ''}`}>
             Home
           </Link>
           <Link to="/my-trips" className={`menu-item${isActive('/my-trips') ? ' is-active' : ''}`}>
