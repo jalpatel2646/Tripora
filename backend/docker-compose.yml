@@ -1,0 +1,12 @@
+services:
+  mongo:
+    image: mongo:8
+    ports: ["27017:27017"]
+    volumes: ["globetrotter-mongo:/data/db"]
+  api:
+    build: .
+    ports: ["5000:5000"]
+    env_file: .env
+    depends_on: [mongo]
+volumes:
+  globetrotter-mongo:

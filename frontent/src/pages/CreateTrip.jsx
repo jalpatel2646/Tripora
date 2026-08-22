@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import { api } from '../lib/api';
 import './CreateTrip.css';
 
 // Suggestion mock data mapped by place
@@ -51,6 +52,8 @@ export default function CreateTrip() {
   const [endDate, setEndDate]         = useState('');
   const [addedActivities, setAddedActivities] = useState([]);
   const [formErrors, setFormErrors]   = useState({});
+  const [submitError, setSubmitError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Dynamic Suggestion Fetch
   const suggestions = SUGGESTIONS_BY_PLACE[place] || DEFAULT_SUGGESTIONS;
@@ -63,7 +66,7 @@ export default function CreateTrip() {
     }
   };
 
-  const handleCreateSubmit = (e) => {
+  const handleCreateSubmit = async (e) => {
     e.preventDefault();
     const errors = {};
     if (!tripName.trim()) errors.tripName = 'Trip name is required.';
@@ -83,8 +86,13 @@ export default function CreateTrip() {
         endDate,
         addedActivities
       };
-      localStorage.setItem('tripora_draft_trip', JSON.stringify(draft));
-      navigate('/build-itinerary', { state: draft });
+      setIsSubmitting(true); setSubmitError('');
+      try {
+        const result = await api.createTrip({ name: tripName, description: `Trip to ${place}`, startDate, endDate });
+        localStorage.setItem('tripora_draft_trip', JSON.stringify({ ...draft, tripId: result.data._id }));
+        navigate('/build-itinerary', { state: { ...draft, tripId: result.data._id } });
+      } catch (error) { setSubmitError(error.message); }
+      finally { setIsSubmitting(false); }
     }
   };
 
@@ -102,6 +110,7 @@ export default function CreateTrip() {
           </header>
 
           <form className="ct-main-form" onSubmit={handleCreateSubmit} noValidate>
+            {submitError && <div className="ct-error-msg" role="alert">{submitError}</div>}
             
             {/* ── Plan a New Trip Form Panel ── */}
             <fieldset className="ct-form-panel">
@@ -231,7 +240,7 @@ export default function CreateTrip() {
                 type="submit"
                 className="ct-save-btn"
               >
-                Create Itinerary
+                {isSubmitting ? 'Creating…' : 'Create Itinerary'}
               </button>
             </div>
 
