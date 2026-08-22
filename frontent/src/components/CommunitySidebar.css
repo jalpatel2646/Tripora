@@ -1,0 +1,142 @@
+/* CommunitySidebar.css */
+.community-sidebar {
+  width: 260px;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.csb-card {
+  background-color: var(--white, #FFFFFF);
+  border: 1.5px solid var(--light-purple, #E7D8FF);
+  border-radius: 18px;
+  padding: 18px 20px;
+  box-shadow: 0 4px 16px rgba(37, 34, 56, 0.04);
+}
+
+.csb-card-title {
+  font-size: 0.92rem;
+  font-weight: 850;
+  color: var(--dark-text, #252238);
+  margin-bottom: 14px;
+  letter-spacing: -0.2px;
+}
+
+/* Highlights list */
+.csb-highlights-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.csb-highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.csb-hi-icon {
+  font-size: 1.1rem;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.csb-hi-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted-text, #6B6880);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.csb-hi-value {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--dark-text, #252238);
+  margin-top: 1px;
+}
+
+/* Top Destinations list */
+.csb-dest-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.csb-dest-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.csb-dest-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.csb-dest-name {
+  font-size: 0.85rem;
+  font-weight: 750;
+  color: var(--dark-text, #252238);
+  flex: 1;
+}
+
+.csb-dest-count {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted-text, #6B6880);
+  background-color: var(--light-purple, #E7D8FF);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+/* CTA Card */
+.csb-cta-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(184,192,255,0.15), rgba(231,216,255,0.25));
+  border-color: var(--primary-purple, #B8C0FF);
+}
+
+.csb-cta-icon {
+  font-size: 1.8rem;
+}
+
+.csb-cta-title {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--dark-text, #252238);
+}
+
+.csb-cta-text {
+  font-size: 0.78rem;
+  color: var(--muted-text, #6B6880);
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .community-sidebar {
+    width: 100%;
+    min-width: unset;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .csb-card {
+    flex: 1;
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 640px) {
+  .community-sidebar {
+    flex-direction: column;
+  }
+  .csb-card {
+    min-width: unset;
+  }
+}

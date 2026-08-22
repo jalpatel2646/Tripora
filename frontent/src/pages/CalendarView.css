@@ -1,0 +1,330 @@
+/* CalendarView.css – Screen 11 Calendar View */
+
+:root {
+  --primary-purple: #B8C0FF;
+  --light-purple:   #E7D8FF;
+  --dark-text:      #252238;
+  --muted-text:     #6B6880;
+  --white:          #FFFFFF;
+  --bg-light:       #F9F8FF;
+}
+
+.cal-view-page-container {
+  min-height: 100vh;
+  background-color: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+}
+
+.cal-view-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 36px 0 64px;
+}
+
+.cal-view-layout {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Page Header */
+.cal-view-page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cal-view-title {
+  font-size: 2.2rem;
+  font-weight: 850;
+  color: var(--dark-text);
+  letter-spacing: -0.8px;
+}
+
+.cal-view-subtitle {
+  font-size: 0.95rem;
+  color: var(--muted-text);
+}
+
+/* Main content row: calendar card + details panel */
+.cal-content-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+/* ── Calendar Card ── */
+.cal-card {
+  flex: 1;
+  min-width: 0;
+  background-color: var(--white);
+  border: 1.5px solid var(--light-purple);
+  border-radius: 22px;
+  padding: 24px 28px;
+  box-shadow: 0 4px 20px rgba(37, 34, 56, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card title row */
+.cal-card-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cal-card-title {
+  font-size: 1.35rem;
+  font-weight: 850;
+  color: var(--dark-text);
+  letter-spacing: -0.4px;
+}
+
+/* View mode tabs */
+.cal-view-mode-tabs {
+  display: flex;
+  gap: 6px;
+  background-color: var(--bg-light);
+  padding: 4px;
+  border-radius: 10px;
+  border: 1.5px solid var(--light-purple);
+}
+
+.cal-view-tab {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--muted-text);
+  padding: 6px 14px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.cal-view-tab.is-active {
+  background-color: var(--primary-purple);
+  color: var(--dark-text);
+  box-shadow: 0 2px 8px rgba(184, 192, 255, 0.4);
+}
+
+.cal-view-tab:not(.is-active):hover {
+  background-color: var(--light-purple);
+  color: var(--dark-text);
+}
+
+/* ── Month Header: nav + month-year + today ── */
+.cal-month-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cal-nav-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid var(--light-purple);
+  background-color: var(--white);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--dark-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.cal-nav-btn:hover {
+  background-color: var(--primary-purple);
+  border-color: var(--primary-purple);
+  transform: scale(1.08);
+}
+
+.cal-month-label-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cal-month-name {
+  font-size: 1.3rem;
+  font-weight: 850;
+  color: var(--dark-text);
+  letter-spacing: -0.5px;
+  min-width: 200px;
+  text-align: center;
+}
+
+.cal-today-btn {
+  background-color: var(--light-purple);
+  color: var(--dark-text);
+  font-family: inherit;
+  font-size: 0.80rem;
+  font-weight: 750;
+  border: 1.5px solid var(--primary-purple);
+  padding: 5px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  flex-shrink: 0;
+}
+
+.cal-today-btn:hover {
+  background-color: var(--primary-purple);
+  transform: translateY(-1px);
+}
+
+/* ── Timeline View ── */
+.cal-timeline-view {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 580px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.cal-timeline-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 40px 0;
+  text-align: center;
+  color: var(--muted-text);
+  font-size: 0.90rem;
+}
+
+.cal-tl-icon { font-size: 2rem; }
+
+.cal-tl-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border-left: 4px solid var(--primary-purple);
+  background-color: var(--bg-light);
+  border: 1px solid var(--light-purple);
+  border-left-width: 4px;
+  transition: box-shadow 0.2s ease;
+}
+
+.cal-tl-item:hover {
+  box-shadow: 0 4px 14px rgba(184, 192, 255, 0.18);
+}
+
+.cal-tl-item.type-hotel      { border-left-color: #93C5FD; }
+.cal-tl-item.type-food       { border-left-color: #FCA5A5; }
+.cal-tl-item.type-activity   { border-left-color: #6EE7B7; }
+.cal-tl-item.type-sightseeing { border-left-color: #C084FC; }
+.cal-tl-item.type-adventure  { border-left-color: #FCD34D; }
+
+.cal-tl-date-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 90px;
+  flex-shrink: 0;
+}
+
+.cal-tl-date {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--dark-text);
+}
+
+.cal-tl-date-end {
+  font-size: 0.70rem;
+  color: var(--muted-text);
+}
+
+.cal-tl-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cal-tl-title {
+  font-size: 0.90rem;
+  font-weight: 800;
+  color: var(--dark-text);
+}
+
+.cal-tl-dest,
+.cal-tl-time {
+  font-size: 0.76rem;
+  color: var(--muted-text);
+  font-weight: 600;
+}
+
+.cal-tl-expense {
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: var(--dark-text);
+  flex-shrink: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .cal-content-row {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .cal-card {
+    padding: 16px 14px;
+    gap: 14px;
+  }
+  .cal-month-name {
+    font-size: 1.05rem;
+    min-width: 160px;
+  }
+  .cal-card-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .cal-view-main {
+    padding: 20px 0 48px;
+  }
+  .cal-view-layout {
+    padding: 0 14px;
+    gap: 18px;
+  }
+  .cal-view-title {
+    font-size: 1.7rem;
+  }
+  .cal-card {
+    padding: 14px 10px;
+    border-radius: 16px;
+    overflow-x: auto;
+  }
+  .cal-month-name {
+    font-size: 0.95rem;
+    min-width: 130px;
+  }
+  .cal-tl-item {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .cal-tl-date-col {
+    min-width: 80px;
+  }
+}

@@ -27,6 +27,15 @@ export default function Navbar() {
           <Link to="/explore" className={`menu-item${isActive('/explore') ? ' is-active' : ''}`}>
             Explore
           </Link>
+          <Link to="/community" className={`menu-item${isActive('/community') ? ' is-active' : ''}`}>
+            Community
+          </Link>
+          <Link to="/calendar" className={`menu-item${isActive('/calendar') ? ' is-active' : ''}`}>
+            Calendar
+          </Link>
+          <Link to="/admin" className={`menu-item${isActive('/admin') ? ' is-active' : ''}`}>
+            Admin
+          </Link>
           <Link to="/profile" className={`menu-item${isActive('/profile') ? ' is-active' : ''}`}>
             Profile
           </Link>

@@ -1,0 +1,132 @@
+/* AdminDashboard.css — Screen 12 Admin Dashboard */
+
+:root {
+  --primary-purple: #B8C0FF;
+  --light-purple:   #E7D8FF;
+  --dark-text:      #252238;
+  --muted-text:     #6B6880;
+  --white:          #FFFFFF;
+  --bg-light:       #F9F8FF;
+}
+
+.adm-dashboard-container {
+  min-height: 100vh;
+  background-color: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+}
+
+.adm-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 36px 0 64px;
+}
+
+.adm-layout-width {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Page Header */
+.adm-page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.adm-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.adm-title {
+  font-size: 2.2rem;
+  font-weight: 850;
+  color: var(--dark-text);
+  letter-spacing: -0.8px;
+}
+
+.adm-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  background-color: var(--primary-purple);
+  color: var(--dark-text);
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.adm-subtitle {
+  font-size: 0.95rem;
+  color: var(--muted-text);
+}
+
+/* Dashboard Grid Layout: 2 Columns */
+.adm-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* Left Main Content Column */
+.adm-main-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0; /* fixes Recharts responsive container overflow issues */
+}
+
+/* Quick statistics summary row */
+.adm-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* Content Area Wrapper */
+.adm-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 1080px) {
+  .adm-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 900px) {
+  .adm-dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .adm-main {
+    padding: 20px 0 48px;
+  }
+  .adm-layout-width {
+    padding: 0 14px;
+    gap: 18px;
+  }
+  .adm-title {
+    font-size: 1.7rem;
+  }
+  .adm-stats-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}

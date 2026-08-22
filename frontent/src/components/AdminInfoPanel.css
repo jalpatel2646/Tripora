@@ -1,0 +1,147 @@
+/* AdminInfoPanel.css */
+.admin-info-panel {
+  width: 320px;
+  min-width: 290px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.aip-card {
+  background-color: var(--white, #FFFFFF);
+  border: 1.5px solid var(--light-purple, #E7D8FF);
+  border-radius: 20px;
+  padding: 20px 22px;
+  box-shadow: 0 4px 16px rgba(37, 34, 56, 0.04);
+}
+
+.aip-title {
+  font-size: 0.95rem;
+  font-weight: 850;
+  color: var(--dark-text, #252238);
+  margin-bottom: 14px;
+  letter-spacing: -0.2px;
+}
+
+/* Admin Overview descriptions */
+.aip-overview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.aip-overview-item {
+  border-bottom: 1px solid #F0EDFF;
+  padding-bottom: 8px;
+}
+.aip-overview-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.aip-overview-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--dark-text, #252238);
+  margin-bottom: 2px;
+}
+
+.aip-overview-desc {
+  font-size: 0.76rem;
+  color: var(--muted-text, #6B6880);
+  line-height: 1.4;
+}
+
+/* Quick Insights */
+.aip-insights-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.aip-insight-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-light, #F9F8FF);
+  border: 1.5px solid #F0EDFF;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.aip-insight-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--muted-text, #6B6880);
+}
+
+.aip-insight-val {
+  font-size: 0.88rem;
+  font-weight: 850;
+  color: var(--dark-text, #252238);
+}
+
+/* Recent Activity List */
+.aip-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.aip-activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: var(--bg-light, #F9F8FF);
+  border: 1px solid #F0EDFF;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.aip-act-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.aip-act-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.aip-act-text {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--dark-text, #252238);
+  line-height: 1.35;
+}
+
+.aip-act-time {
+  font-size: 0.68rem;
+  color: var(--muted-text, #6B6880);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .admin-info-panel {
+    width: 100%;
+    min-width: unset;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .aip-card {
+    flex: 1;
+    min-width: 260px;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-info-panel {
+    flex-direction: column;
+  }
+  .aip-card {
+    min-width: unset;
+  }
+}
