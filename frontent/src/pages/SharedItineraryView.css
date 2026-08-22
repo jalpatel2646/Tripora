@@ -1,0 +1,138 @@
+.shared-page-container {
+  background: linear-gradient(135deg, #0f1524 0%, #171d33 100%);
+}
+
+.public-banner-area {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.banner-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.public-badge {
+  align-self: flex-start;
+  background: rgba(74, 222, 128, 0.2);
+  color: #4ade80;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.banner-text h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(to right, #ffffff, #a0c4ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.banner-text p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+}
+
+.copy-trip-btn {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: #000;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+}
+
+.copy-trip-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 242, 254, 0.5);
+}
+
+.social-share-ribbon {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 0.5rem;
+}
+
+.social-share-ribbon span {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.social-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+}
+
+.social-btn.copy-link:hover { background: rgba(255, 255, 255, 0.2); }
+.social-btn.twitter:hover { background: rgba(29, 161, 242, 0.3); border-color: #1da1f2; color: #1da1f2; }
+.social-btn.facebook:hover { background: rgba(24, 119, 242, 0.3); border-color: #1877f2; color: #1877f2; }
+.social-btn.whatsapp:hover { background: rgba(37, 211, 102, 0.3); border-color: #25d366; color: #25d366; }
+
+/* Read only mode specific styles */
+.read-only-mode .day-activity-item {
+  pointer-events: none; /* Disable editing visually */
+}
+.read-only-mode .day-activity-item .delete-btn,
+.read-only-mode .day-activity-item .edit-btn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .banner-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .copy-trip-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .social-share-ribbon {
+    flex-wrap: wrap;
+  }
+}
