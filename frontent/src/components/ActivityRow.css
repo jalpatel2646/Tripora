@@ -1,152 +1,204 @@
-/* ActivityRow.css */
+/* ActivityRow.css — Timeline & Card Style system */
+
 .activity-row-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative;
+  gap: 24px;
   width: 100%;
 }
 
-.activity-card {
-  width: 100%;
-  background-color: var(--white, #FFFFFF);
-  border: 1.5px solid var(--light-purple, #E7D8FF);
-  border-radius: 16px;
-  padding: 16px 20px;
-  display: grid;
-  grid-template-columns: 90px 1fr 120px;
-  align-items: center;
+/* Timeline Left Column */
+.act-timeline-col {
+  display: flex;
+  flex-shrink: 0;
   gap: 16px;
-  box-shadow: 0 4px 16px rgba(37, 34, 56, 0.04);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  width: 110px;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-top: 18px;
+}
+
+.act-time-val {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--dark-text);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.act-marker-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  width: 12px;
+}
+
+.act-timeline-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--primary-purple);
+  z-index: 2;
+  box-shadow: 0 0 0 4px var(--white);
+}
+
+.act-timeline-line {
+  position: absolute;
+  top: 8px;
+  bottom: -32px; /* Pulls down to connect with the next day card or dot */
+  width: 1.5px;
+  background-color: var(--border-color);
+  z-index: 1;
+}
+
+/* Activity Card */
+.activity-card {
+  flex: 1;
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--t-fast) var(--ease);
+  margin-bottom: 24px;
 }
 
 .activity-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(184, 192, 255, 0.25);
-  border-color: var(--primary-purple, #B8C0FF);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-purple);
 }
 
-/* Time */
-.act-time {
-  font-size: 0.88rem;
-  font-weight: 750;
-  color: var(--dark-text, #252238);
-  background-color: var(--bg-light, #F9F8FF);
-  border: 1px solid var(--light-purple, #E7D8FF);
-  padding: 6px 10px;
-  border-radius: 8px;
-  text-align: center;
-  white-space: nowrap;
-}
-
-/* Info */
-.act-info {
+.act-card-body {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-}
-
-.act-title-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  gap: 6px;
+  flex: 1;
 }
 
 .act-name {
   font-size: 1.05rem;
-  font-weight: 800;
-  color: var(--dark-text, #252238);
+  font-weight: 650;
+  color: var(--dark-text);
+  margin: 0;
   letter-spacing: -0.2px;
 }
 
-.act-type-badge {
-  font-size: 0.70rem;
-  font-weight: 750;
-  padding: 3px 8px;
-  border-radius: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-}
-
-.type-travel      { background-color: #E7D8FF; color: #252238; }
-.type-hotel       { background-color: #D8F3FF; color: #005580; }
-.type-food        { background-color: #FFE6D8; color: #803300; }
-.type-sightseeing { background-color: #E6FFD8; color: #2E6600; }
-.type-adventure   { background-color: #FFD8E6; color: #800033; }
-.type-shopping    { background-color: #FFF2D8; color: #805C00; }
-
 .act-desc {
-  font-size: 0.84rem;
-  color: var(--muted-text, #6B6880);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--muted-text);
+  margin: 0;
 }
+
+.act-footer-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+/* Category Tags system */
+.act-type-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+.type-travel      { background-color: #E8EBFD; color: #4F5EAE; }
+.type-hotel       { background-color: #E2F4FD; color: #2C6B8D; }
+.type-food        { background-color: #FFF2E8; color: #A05934; }
+.type-sightseeing { background-color: #ECFDF5; color: #047857; }
+.type-adventure   { background-color: #FDF2F8; color: #BE185D; }
+.type-shopping    { background-color: #FEFCE8; color: #A16207; }
 
 .act-duration {
   font-size: 0.76rem;
   font-weight: 600;
-  color: var(--muted-text, #6B6880);
+  color: var(--muted-text);
 }
 
-/* Expense Badge */
-.act-expense-wrap {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.act-expense-badge {
-  background-color: var(--light-purple, #E7D8FF);
-  color: var(--dark-text, #252238);
-  font-size: 0.90rem;
-  font-weight: 800;
-  padding: 8px 16px;
-  border-radius: 10px;
-  border: 1px solid var(--primary-purple, #B8C0FF);
-  text-align: center;
-  white-space: nowrap;
-}
-
-.act-expense-badge.is-free {
-  background-color: #F0EDFF;
-  color: #6B6880;
-  border-color: #E5E7EB;
-}
-
-/* Timeline Connector */
-.act-timeline-connector {
+/* Expense Column on the right */
+.act-expense-col {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 6px 0;
-  color: var(--primary-purple, #B8C0FF);
+  align-items: flex-end;
+  gap: 4px;
+  min-width: 90px;
+  flex-shrink: 0;
 }
 
-.connector-line {
-  width: 2px;
-  height: 12px;
-  background-color: var(--light-purple, #E7D8FF);
+.act-expense-lbl {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--muted-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.connector-arrow {
-  font-size: 1.1rem;
-  font-weight: 800;
-  line-height: 1;
+.act-expense-amount {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark-text);
 }
 
-/* Responsive */
+.act-expense-free {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #6B6880;
+  background-color: var(--light-purple);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.5px;
+}
+
+/* Responsive adjustments */
 @media (max-width: 640px) {
-  .activity-card {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    padding: 14px 16px;
+  .activity-row-container {
+    flex-direction: column;
+    gap: 8px;
   }
-  .act-time {
-    width: fit-content;
-  }
-  .act-expense-wrap {
-    justify-content: flex-start;
-  }
-  .act-expense-badge {
+  
+  .act-timeline-col {
     width: 100%;
-    text-align: center;
+    justify-content: flex-start;
+    padding-top: 0;
+    gap: 8px;
+    align-items: center;
+  }
+  
+  .act-marker-wrapper {
+    height: 12px;
+    width: 12px;
+  }
+  
+  .act-timeline-line {
+    display: none;
+  }
+  
+  .activity-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px 20px;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .act-expense-col {
+    align-items: flex-start;
+    min-width: unset;
+    width: 100%;
+    border-top: 1px solid var(--border-color);
+    padding-top: 12px;
   }
 }

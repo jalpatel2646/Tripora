@@ -6,41 +6,47 @@ export default function ActivityRow({ activity, isLast }) {
 
   const formattedExpense = expense > 0 
     ? `₹${Number(expense).toLocaleString('en-IN')}` 
-    : 'Free';
+    : 'FREE';
 
   return (
     <div className="activity-row-container">
-      <article className="activity-card" aria-label={`Activity: ${name}`}>
-        {/* Time */}
-        <div className="act-time">{time}</div>
+      {/* Time & Marker Column */}
+      <div className="act-timeline-col">
+        <span className="act-time-val">{time}</span>
+        <div className="act-marker-wrapper">
+          <span className="act-timeline-dot"></span>
+          {!isLast && <span className="act-timeline-line"></span>}
+        </div>
+      </div>
 
-        {/* Info */}
-        <div className="act-info">
+      {/* Activity Card */}
+      <article className="activity-card" aria-label={`Activity: ${name}`}>
+        <div className="act-card-body">
           <div className="act-title-row">
             <h4 className="act-name">{name}</h4>
+          </div>
+          {description && <p className="act-desc">{description}</p>}
+          
+          <div className="act-footer-meta">
             <span className={`act-type-badge type-${type.toLowerCase()}`}>
               {type}
             </span>
+            {duration && <span className="act-duration">⏱ {duration}</span>}
           </div>
-          {description && <p className="act-desc">{description}</p>}
-          {duration && <span className="act-duration">⏱ {duration}</span>}
         </div>
 
-        {/* Expense Badge */}
-        <div className="act-expense-wrap">
-          <span className={`act-expense-badge${expense === 0 ? ' is-free' : ''}`}>
-            {formattedExpense}
-          </span>
+        {/* Expense Column */}
+        <div className="act-expense-col">
+          {expense > 0 ? (
+            <>
+              <span className="act-expense-lbl">COST</span>
+              <span className="act-expense-amount">{formattedExpense}</span>
+            </>
+          ) : (
+            <span className="act-expense-free">FREE</span>
+          )}
         </div>
       </article>
-
-      {/* Timeline Arrow Connector */}
-      {!isLast && (
-        <div className="act-timeline-connector" aria-hidden="true">
-          <span className="connector-line" />
-          <span className="connector-arrow">↓</span>
-        </div>
-      )}
     </div>
   );
 }

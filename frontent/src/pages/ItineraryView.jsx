@@ -171,6 +171,8 @@ export default function ItineraryView() {
     return acc;
   }, {});
 
+  const totalActivitiesCount = INITIAL_ITINERARY.reduce((sum, d) => sum + d.activities.length, 0);
+
   return (
     <div className="iv-page-container">
       {/* ── Top Navbar ── */}
@@ -195,51 +197,107 @@ export default function ItineraryView() {
 
           {/* ── 3. Itinerary Header ── */}
           <header className="iv-trip-header">
-            <div className="iv-header-main">
-              <h1 className="iv-trip-title">Itinerary for Goa Escape</h1>
-              <p className="iv-trip-route">📍 Ahmedabad → Mumbai → Goa</p>
+            <div className="iv-header-top-row">
+              <span className="iv-header-subtitle-label">YOUR ITINERARY</span>
+              <div className="iv-header-actions">
+                <button type="button" className="btn-action-ghost">Edit</button>
+                <button type="button" className="btn-action-ghost">Share</button>
+                <button type="button" className="btn-action-dots" aria-label="More options">•••</button>
+              </div>
             </div>
 
-            <div className="iv-header-meta-row">
-              <div className="iv-meta-badge">📅 12 Aug – 20 Aug</div>
-              <div className="iv-meta-badge">⏱ 8 Days • 3 Cities</div>
-              <div className="iv-meta-badge iv-budget-badge">
-                💰 Total Budget: <strong>₹{totalExpense.toLocaleString('en-IN')}</strong>
+            <h1 className="iv-trip-title">Goa Escape</h1>
+
+            {/* Route Visualization */}
+            <div className="iv-route-visualization" aria-label="Trip Route">
+              <div className="iv-route-point">
+                <span className="iv-route-dot"></span>
+                <span className="iv-route-city">Ahmedabad</span>
+              </div>
+              <div className="iv-route-line"></div>
+              <div className="iv-route-point">
+                <span className="iv-route-dot"></span>
+                <span className="iv-route-city">Mumbai</span>
+              </div>
+              <div className="iv-route-line"></div>
+              <div className="iv-route-point">
+                <span className="iv-route-dot"></span>
+                <span className="iv-route-city">Goa</span>
+              </div>
+            </div>
+
+            {/* Simplified Trip Info */}
+            <div className="iv-trip-info-summary">
+              <div className="iv-info-block">
+                <span className="iv-info-label">DATES</span>
+                <span className="iv-info-value">12 Aug — 20 Aug</span>
+              </div>
+              <div className="iv-info-block">
+                <span className="iv-info-label">DURATION</span>
+                <span className="iv-info-value">8 Days • 3 Cities</span>
+              </div>
+              <div className="iv-info-block iv-budget-block">
+                <span className="iv-info-label">TOTAL BUDGET</span>
+                <span className="iv-info-value">₹{totalExpense.toLocaleString('en-IN')}</span>
+              </div>
+            </div>
+
+            {/* Trip Progress */}
+            <div className="iv-trip-progress-container">
+              <div className="iv-progress-text-row">
+                <span className="iv-progress-label">Trip Progress</span>
+                <span className="iv-progress-val">Day 1 of 8 (12%)</span>
+              </div>
+              <div className="iv-progress-bar-track">
+                <div className="iv-progress-bar-fill" style={{ width: '12.5%' }}></div>
               </div>
             </div>
           </header>
 
           {/* ── 4 - 9. Main Itinerary Day-wise List (Or Calendar Placeholder) ── */}
           {viewMode === 'list' ? (
-            <div className="iv-main-itinerary-area">
-              <div className="iv-columns-header">
-                <span className="col-label-left">Physical Activity & Timeline</span>
-                <span className="col-label-right">Expense</span>
+            <div className="iv-content-layout">
+              <div className="iv-main-itinerary-area">
+                <div className="iv-section-title-row">
+                  <h2 className="iv-section-title">Your Itinerary</h2>
+                  <span className="iv-section-subtitle">
+                    {processedDays.length} {processedDays.length === 1 ? 'day' : 'days'} • {totalActivitiesCount} {totalActivitiesCount === 1 ? 'activity' : 'activities'}
+                  </span>
+                </div>
+
+                {processedDays.length > 0 ? (
+                  <div className="iv-days-list">
+                    {processedDays.map((dayData) => (
+                      <ItineraryDay key={dayData.day} dayData={dayData} />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="iv-empty-state">
+                    <div className="empty-icon">🔍</div>
+                    <h3>No activities match your filter</h3>
+                    <p>Try clearing your search terms or choosing "All Types".</p>
+                    <button
+                      type="button"
+                      className="iv-reset-btn"
+                      onClick={() => {
+                        setSearch('');
+                        setFilter('all');
+                      }}
+                    >
+                      Reset Filters
+                    </button>
+                  </div>
+                )}
               </div>
 
-              {processedDays.length > 0 ? (
-                <div className="iv-days-list">
-                  {processedDays.map((dayData) => (
-                    <ItineraryDay key={dayData.day} dayData={dayData} />
-                  ))}
-                </div>
-              ) : (
-                <div className="iv-empty-state">
-                  <div className="empty-icon">🔍</div>
-                  <h3>No activities match your filter</h3>
-                  <p>Try clearing your search terms or choosing "All Types".</p>
-                  <button
-                    type="button"
-                    className="iv-reset-btn"
-                    onClick={() => {
-                      setSearch('');
-                      setFilter('all');
-                    }}
-                  >
-                    Reset Filters
-                  </button>
-                </div>
-              )}
+              {/* Sidebar Column */}
+              <aside className="iv-sidebar-column">
+                <BudgetSummary
+                  categoryTotals={categoryTotals}
+                  totalExpense={totalExpense}
+                  plannedBudget={plannedBudget}
+                />
+              </aside>
             </div>
           ) : (
             /* Calendar View Placeholder */
@@ -256,13 +314,6 @@ export default function ItineraryView() {
               </button>
             </div>
           )}
-
-          {/* ── 10 - 12. Trip Budget Summary Section ── */}
-          <BudgetSummary
-            categoryTotals={categoryTotals}
-            totalExpense={totalExpense}
-            plannedBudget={plannedBudget}
-          />
 
         </div>
       </main>

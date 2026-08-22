@@ -115,37 +115,71 @@ export default function SharedItineraryView() {
 
           {/* Itinerary Header */}
           <header className="iv-trip-header">
-            <div className="iv-header-main">
-              <h1 className="iv-trip-title">Goa Escape - Public View</h1>
-              <p className="iv-trip-route">📍 Ahmedabad → Mumbai → Goa</p>
+            <div className="iv-header-top-row">
+              <span className="iv-header-subtitle-label">YOUR ITINERARY</span>
             </div>
-            <div className="iv-header-meta-row">
-              <div className="iv-meta-badge">📅 12 Aug – 20 Aug</div>
-              <div className="iv-meta-badge">⏱ 8 Days • 3 Cities</div>
-              <div className="iv-meta-badge iv-budget-badge">
-                💰 Estimated Budget: <strong>₹{totalExpense.toLocaleString('en-IN')}</strong>
+
+            <h1 className="iv-trip-title">Goa Escape - Public View</h1>
+
+            {/* Route Visualization */}
+            <div className="iv-route-visualization" aria-label="Trip Route">
+              <div className="iv-route-point">
+                <span className="iv-route-dot"></span>
+                <span className="iv-route-city">Ahmedabad</span>
+              </div>
+              <div className="iv-route-line"></div>
+              <div className="iv-route-point">
+                <span className="iv-route-dot"></span>
+                <span className="iv-route-city">Mumbai</span>
+              </div>
+              <div className="iv-route-line"></div>
+              <div className="iv-route-point">
+                <span className="iv-route-dot"></span>
+                <span className="iv-route-city">Goa</span>
+              </div>
+            </div>
+
+            {/* Simplified Trip Info */}
+            <div className="iv-trip-info-summary">
+              <div className="iv-info-block">
+                <span className="iv-info-label">DATES</span>
+                <span className="iv-info-value">12 Aug — 20 Aug</span>
+              </div>
+              <div className="iv-info-block">
+                <span className="iv-info-label">DURATION</span>
+                <span className="iv-info-value">8 Days • 3 Cities</span>
+              </div>
+              <div className="iv-info-block iv-budget-block">
+                <span className="iv-info-label">ESTIMATED BUDGET</span>
+                <span className="iv-info-value">₹{totalExpense.toLocaleString('en-IN')}</span>
               </div>
             </div>
           </header>
 
           {/* Itinerary List */}
-          <div className="iv-main-itinerary-area read-only-mode">
-            <div className="iv-columns-header">
-              <span className="col-label-left">Physical Activity & Timeline</span>
-              <span className="col-label-right">Expense</span>
+          <div className="iv-content-layout">
+            <div className="iv-main-itinerary-area read-only-mode">
+              <div className="iv-section-title-row">
+                <h2 className="iv-section-title">Your Itinerary</h2>
+                <span className="iv-section-subtitle">
+                  {INITIAL_ITINERARY.length} {INITIAL_ITINERARY.length === 1 ? 'day' : 'days'} • {INITIAL_ITINERARY.reduce((sum, d) => sum + d.activities.length, 0)} activities
+                </span>
+              </div>
+              <div className="iv-days-list">
+                {INITIAL_ITINERARY.map((dayData) => (
+                  <ItineraryDay key={dayData.day} dayData={dayData} />
+                ))}
+              </div>
             </div>
-            <div className="iv-days-list">
-              {INITIAL_ITINERARY.map((dayData) => (
-                <ItineraryDay key={dayData.day} dayData={dayData} />
-              ))}
-            </div>
-          </div>
 
-          <BudgetSummary
-            categoryTotals={categoryTotals}
-            totalExpense={totalExpense}
-            plannedBudget={50000}
-          />
+            <aside className="iv-sidebar-column">
+              <BudgetSummary
+                categoryTotals={categoryTotals}
+                totalExpense={totalExpense}
+                plannedBudget={50000}
+              />
+            </aside>
+          </div>
 
         </div>
       </main>

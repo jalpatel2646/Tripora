@@ -1,20 +1,20 @@
-/* StatCard.css */
+/* StatCard.css — Clean Premium KPI Card */
 .stat-card {
   background-color: var(--white, #FFFFFF);
-  border: 1.5px solid var(--light-purple, #E7D8FF);
-  border-radius: 16px;
-  padding: 18px 20px;
-  box-shadow: 0 4px 16px rgba(37, 34, 56, 0.04);
+  border: 1px solid #ECECF2;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(31, 31, 46, 0.03);
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  gap: 10px;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
 }
 
 .stat-card:hover {
   transform: translateY(-2px);
-  border-color: var(--primary-purple, #B8C0FF);
-  box-shadow: 0 8px 24px rgba(184, 192, 255, 0.16);
+  box-shadow: 0 8px 24px rgba(31, 31, 46, 0.06);
 }
 
 .stat-card-header {
@@ -25,21 +25,22 @@
 }
 
 .stat-card-title {
-  font-size: 0.82rem;
-  font-weight: 750;
-  color: var(--muted-text, #6B6880);
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted-text, #747487);
 }
 
 .stat-card-icon {
-  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  color: #B8C0FF;
 }
 
 .stat-card-value {
-  font-size: 1.8rem;
-  font-weight: 850;
-  color: var(--dark-text, #252238);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--dark-text, #1F1F2E);
+  line-height: 1.1;
   letter-spacing: -0.5px;
 }
 
@@ -47,23 +48,24 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .stat-card-change.positive {
-  color: #10B981; /* green */
+  color: #10B981; /* soft green */
 }
 
 .stat-card-change.negative {
-  color: #EF4444; /* red */
+  color: #EF4444; /* soft red */
 }
 
 .change-arrow {
-  font-size: 0.65rem;
+  font-size: 0.7rem;
+  line-height: 1;
 }
 
 .change-period {
-  color: var(--muted-text, #6B6880);
-  font-weight: 500;
+  color: var(--muted-text, #747487);
+  font-weight: 400;
 }

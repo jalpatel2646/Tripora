@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import ItinerarySection from '../components/ItinerarySection';
 import './BuildItinerary.css';
+import jaipurImage from '../assets/jaipur.jpg';
+import ladakhImage from '../assets/ladakh.jpg';
 
 // Initial state creator helper
 const createEmptySection = (id) => ({
@@ -19,9 +21,9 @@ const createEmptySection = (id) => ({
 const PLACE_IMAGES = {
   Goa: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=600&q=80',
   Manali: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80',
-  Jaipur: 'https://images.unsplash.com/photo-1477587458883-471a5ed942e5?auto=format&fit=crop&w=600&q=80',
+  Jaipur: jaipurImage,
   Kerala: 'https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=600&q=80',
-  Ladakh: 'https://images.unsplash.com/photo-1544085311-115edd9264b2?auto=format&fit=crop&w=600&q=80'
+  Ladakh: ladakhImage
 };
 
 export default function BuildItinerary() {

@@ -7,8 +7,23 @@ import UserTable from '../components/UserTable';
 import CityAnalytics from '../components/CityAnalytics';
 import ActivityAnalytics from '../components/ActivityAnalytics';
 import UserTrends from '../components/UserTrends';
-import AdminInfoPanel from '../components/AdminInfoPanel';
+import { Users, Compass, MapPin, Activity } from 'lucide-react';
 import './AdminDashboard.css';
+
+// ── Dummy Insights & Activity ───────────────────────────────────────────────
+const QUICK_INSIGHTS = [
+  { label: 'Popular City', value: 'Goa' },
+  { label: 'Top Activity', value: 'Sightseeing' },
+  { label: 'Active Month', value: 'December' },
+  { label: 'Active Users', value: '10,420' }
+];
+
+const RECENT_ACTIVITIES = [
+  { id: 1, text: 'Aarav Shah created "Goa Escape"', time: '2 min ago' },
+  { id: 2, text: 'Riya added Water Sports to Goa itinerary', time: '10 min ago' },
+  { id: 3, text: 'Karan Malhotra joined Tripora', time: '25 min ago' },
+  { id: 4, text: 'Meera Nair published Kerala Budget Tips', time: '1 hr ago' }
+];
 
 // ── Dummy Users List ─────────────────────────────────────────────────────────
 const INITIAL_USERS = [
@@ -155,7 +170,7 @@ export default function AdminDashboard() {
               <h1 className="adm-title">Admin Dashboard</h1>
               <span className="adm-badge">Admin</span>
             </div>
-            <p className="adm-subtitle">Monitor users, destinations, activities, and platform engagement.</p>
+            <p className="adm-subtitle">Monitor users, trips and platform performance.</p>
           </header>
 
           {/* Search controls */}
@@ -164,54 +179,78 @@ export default function AdminDashboard() {
             groupBy={groupBy} setGroupBy={setGroupBy}
             filter={filter}   setFilter={setFilter}
             sortBy={sortBy}   setSortBy={setSortBy}
+            activeTab={activeTab}
           />
 
           {/* Tab Navigation buttons */}
           <AdminTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
-          {/* Two Column Grid */}
-          <div className="adm-dashboard-grid">
-            {/* Left Main Content */}
-            <div className="adm-main-column">
-              {/* Overview stat summary cards */}
-              <section className="adm-stats-row" aria-label="Quick statistics">
-                <StatCard title="Total Users" value="12,480" change="+8.4%" icon="👥" />
-                <StatCard title="Total Trips" value="5,630" change="+12.1%" icon="🗺️" />
-                <StatCard title="Cities Explored" value="142" change="+4.2%" icon="🌆" />
-                <StatCard title="Activities Added" value="18,920" change="+6.8%" icon="🏄" />
-              </section>
+          {/* Overview stat summary cards */}
+          <section className="adm-stats-row" aria-label="Quick statistics">
+            <StatCard title="Total Users" value="12,480" change="+8.4%" icon={<Users size={18} />} />
+            <StatCard title="Total Trips" value="5,630" change="+12.1%" icon={<Compass size={18} />} />
+            <StatCard title="Cities Explored" value="142" change="+4.2%" icon={<MapPin size={18} />} />
+            <StatCard title="Activities Added" value="18,920" change="+6.8%" icon={<Activity size={18} />} />
+          </section>
 
-              {/* Dynamic Content based on active tab */}
-              <div className="adm-content-wrapper">
-                {activeTab === 'users' && (
-                  <UserTable
-                    users={processedUsers}
-                    onToggleStatus={handleToggleStatus}
-                    onDeleteUser={handleDeleteUser}
-                  />
-                )}
+          {/* Main Content Area */}
+          <div className="adm-content-wrapper">
+            {activeTab === 'users' && (
+              <UserTable
+                users={processedUsers}
+                onToggleStatus={handleToggleStatus}
+                onDeleteUser={handleDeleteUser}
+              />
+            )}
 
-                {activeTab === 'cities' && (
-                  <CityAnalytics data={processedCities} />
-                )}
+            {activeTab === 'cities' && (
+              <CityAnalytics data={processedCities} />
+            )}
 
-                {activeTab === 'activities' && (
-                  <ActivityAnalytics data={processedActivities} />
-                )}
+            {activeTab === 'activities' && (
+              <ActivityAnalytics data={processedActivities} />
+            )}
 
-                {activeTab === 'analytics' && (
-                  <UserTrends
-                    userGrowthData={USER_GROWTH}
-                    tripsCreatedData={TRIPS_CREATED}
-                    platformUsageData={PLATFORM_USAGE}
-                  />
-                )}
+            {activeTab === 'analytics' && (
+              <UserTrends
+                userGrowthData={USER_GROWTH}
+                tripsCreatedData={TRIPS_CREATED}
+                platformUsageData={PLATFORM_USAGE}
+              />
+            )}
+          </div>
+
+          {/* Quick Insights Row */}
+          <section className="adm-insights-section">
+            <h3 className="adm-section-heading">Quick Insights</h3>
+            <div className="adm-insights-grid">
+              {QUICK_INSIGHTS.map((insight) => (
+                <div key={insight.label} className="adm-insight-card">
+                  <span className="adm-insight-label">{insight.label}</span>
+                  <span className="adm-insight-val">{insight.value}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Recent Platform Activity */}
+          <section className="adm-activity-section">
+            <header className="adm-section-header">
+              <h3 className="adm-section-heading">Recent Activity</h3>
+              <button type="button" className="adm-view-all-btn">View all</button>
+            </header>
+            <div className="adm-activity-card">
+              <div className="adm-activity-list">
+                {RECENT_ACTIVITIES.map((act) => (
+                  <div key={act.id} className="adm-activity-row">
+                    <span className="adm-activity-text">{act.text}</span>
+                    <span className="adm-activity-time">{act.time}</span>
+                  </div>
+                ))}
               </div>
             </div>
+          </section>
 
-            {/* Right Information Column */}
-            <AdminInfoPanel />
-          </div>
         </div>
       </main>
     </div>

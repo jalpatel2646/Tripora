@@ -1,37 +1,46 @@
-/* ItineraryDay.css */
+/* ItineraryDay.css — Premium Day Card Layout */
+
 .itinerary-day-section {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  background-color: var(--white, #FFFFFF);
-  border: 1.5px solid var(--light-purple, #E7D8FF);
-  border-radius: 20px;
-  padding: 24px 28px;
-  box-shadow: 0 4px 16px rgba(37, 34, 56, 0.04);
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 28px 36px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--t-fast) var(--ease);
 }
 
+.itinerary-day-section.is-collapsed {
+  padding: 20px 32px;
+}
+
+.itinerary-day-section:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Day Header */
 .id-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1.5px solid #F0EDFF;
-  padding-bottom: 14px;
+  user-select: none;
 }
 
 .id-badge-wrap {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
 .id-badge {
-  background-color: var(--primary-purple, #B8C0FF);
-  color: var(--dark-text, #252238);
-  font-size: 0.90rem;
-  font-weight: 850;
-  padding: 6px 16px;
+  background-color: var(--light-purple);
+  color: var(--dark-text);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
   border-radius: 20px;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.5px;
 }
 
 .id-sub-info {
@@ -41,68 +50,138 @@
 }
 
 .id-date {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: var(--dark-text, #252238);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark-text);
+  margin: 0;
 }
 
 .id-city {
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--muted-text, #6B6880);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted-text);
 }
 
-/* Timeline */
+.id-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.id-collapsed-summary {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted-text);
+}
+
+.id-collapse-arrow {
+  font-size: 1.1rem;
+  color: var(--muted-text);
+  transition: transform var(--t-fast) var(--ease);
+  line-height: 1;
+}
+
+/* Daily Summary Row */
+.id-daily-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+  padding: 10px 16px;
+  background-color: var(--bg-light);
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--muted-text);
+}
+
+.id-summary-city {
+  font-weight: 700;
+  color: var(--dark-text);
+}
+
+.id-summary-stats {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bullet-dot {
+  font-size: 0.5rem;
+  color: var(--primary-purple);
+}
+
+/* Activities Timeline */
 .id-activities-timeline {
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-top: 24px;
 }
 
-/* Footer Total */
+/* Footer Total styling */
 .id-footer {
   display: flex;
   justify-content: flex-end;
-  border-top: 1.5px solid #F0EDFF;
-  padding-top: 14px;
+  border-top: 1px solid var(--border-color);
+  margin-top: 24px;
+  padding-top: 20px;
 }
 
 .id-total-box {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background-color: var(--bg-light, #F9F8FF);
-  border: 1px solid var(--light-purple, #E7D8FF);
-  padding: 8px 18px;
-  border-radius: 12px;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .id-total-label {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted-text);
+}
+
+.id-total-amount-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.id-total-amount-lbl {
+  font-size: 0.68rem;
   font-weight: 700;
-  color: var(--muted-text, #6B6880);
+  color: var(--muted-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .id-total-amount {
-  font-size: 1.05rem;
-  font-weight: 850;
-  color: var(--dark-text, #252238);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--dark-text);
 }
 
+/* Responsive adjustments */
 @media (max-width: 640px) {
   .itinerary-day-section {
-    padding: 18px 16px;
+    padding: 20px 24px;
   }
   .id-sub-info {
     flex-direction: column;
     align-items: flex-start;
     gap: 2px;
   }
-  .id-footer {
-    justify-content: stretch;
+  .id-city {
+    display: none; /* Already visible in daily summary */
   }
-  .id-total-box {
-    width: 100%;
-    justify-content: space-between;
+  .id-daily-summary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 12px;
+  }
+  .id-summary-stats {
+    flex-wrap: wrap;
   }
 }

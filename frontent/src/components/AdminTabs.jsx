@@ -3,10 +3,10 @@ import './AdminTabs.css';
 
 export default function AdminTabs({ activeTab, setActiveTab }) {
   const tabs = [
-    { id: 'users', label: '👤 Manage Users' },
-    { id: 'cities', label: '🌆 Popular Cities' },
-    { id: 'activities', label: '🏄 Popular Activities' },
-    { id: 'analytics', label: '📈 User Trends & Analytics' }
+    { id: 'users', label: 'Users' },
+    { id: 'cities', label: 'Cities' },
+    { id: 'activities', label: 'Activities' },
+    { id: 'analytics', label: 'Analytics' }
   ];
 
   return (

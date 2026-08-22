@@ -5,8 +5,11 @@ export default function AdminControls({
   search, setSearch,
   groupBy, setGroupBy,
   filter, setFilter,
-  sortBy, setSortBy
+  sortBy, setSortBy,
+  activeTab
 }) {
+  const showGroupBy = activeTab === 'users';
+
   return (
     <div className="adm-controls-wrapper" role="region" aria-label="Admin controls">
       {/* Search Bar */}
@@ -27,15 +30,17 @@ export default function AdminControls({
 
       {/* Dropdowns */}
       <div className="adm-dropdowns-group">
-        <div className="adm-control-box">
-          <label htmlFor="adm-group-by" className="adm-label">Group By:</label>
-          <select id="adm-group-by" className="adm-select" value={groupBy} onChange={(e) => setGroupBy(e.target.value)}>
-            <option value="user">User</option>
-            <option value="city">City</option>
-            <option value="activity">Activity</option>
-            <option value="month">Month</option>
-          </select>
-        </div>
+        {showGroupBy && (
+          <div className="adm-control-box">
+            <label htmlFor="adm-group-by" className="adm-label">Group By:</label>
+            <select id="adm-group-by" className="adm-select" value={groupBy} onChange={(e) => setGroupBy(e.target.value)}>
+              <option value="user">User</option>
+              <option value="city">City</option>
+              <option value="activity">Activity</option>
+              <option value="month">Month</option>
+            </select>
+          </div>
+        )}
 
         <div className="adm-control-box">
           <label htmlFor="adm-filter" className="adm-label">Filter:</label>

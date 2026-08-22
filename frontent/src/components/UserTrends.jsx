@@ -28,19 +28,19 @@ export default function UserTrends({ userGrowthData, tripsCreatedData, platformU
           <h3 className="ut-chart-title">User Growth</h3>
           <p className="ut-chart-subtitle">Monthly user registrations</p>
           <div className="ut-chart-inner">
-            <ResponsiveContainer width="100%" height={220}>
+            <ResponsiveContainer width="100%" height={280}>
               <LineChart data={userGrowthData} margin={{ top: 10, right: 10, left: -25, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#F0EDFF" vertical={false} />
-                <XAxis dataKey="month" stroke="#6B6880" fontSize={11} tickLine={false} axisLine={false} />
-                <YAxis stroke="#6B6880" fontSize={11} tickLine={false} axisLine={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#ECECF2" vertical={false} />
+                <XAxis dataKey="month" stroke="#747487" fontSize={11} tickLine={false} axisLine={false} />
+                <YAxis stroke="#747487" fontSize={11} tickLine={false} axisLine={false} />
                 <Tooltip
                   contentStyle={{
                     backgroundColor: '#FFFFFF',
-                    border: '1.5px solid #E7D8FF',
+                    border: '1px solid #ECECF2',
                     borderRadius: '8px',
                     fontFamily: 'inherit',
                     fontSize: '0.80rem',
-                    color: '#252238'
+                    color: '#1F1F2E'
                   }}
                 />
                 <Line
@@ -60,19 +60,19 @@ export default function UserTrends({ userGrowthData, tripsCreatedData, platformU
           <h3 className="ut-chart-title">Trips Created</h3>
           <p className="ut-chart-subtitle">Trip plans created per month</p>
           <div className="ut-chart-inner">
-            <ResponsiveContainer width="100%" height={220}>
+            <ResponsiveContainer width="100%" height={280}>
               <BarChart data={tripsCreatedData} margin={{ top: 10, right: 10, left: -25, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#F0EDFF" vertical={false} />
-                <XAxis dataKey="month" stroke="#6B6880" fontSize={11} tickLine={false} axisLine={false} />
-                <YAxis stroke="#6B6880" fontSize={11} tickLine={false} axisLine={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#ECECF2" vertical={false} />
+                <XAxis dataKey="month" stroke="#747487" fontSize={11} tickLine={false} axisLine={false} />
+                <YAxis stroke="#747487" fontSize={11} tickLine={false} axisLine={false} />
                 <Tooltip
                   contentStyle={{
                     backgroundColor: '#FFFFFF',
-                    border: '1.5px solid #E7D8FF',
+                    border: '1px solid #ECECF2',
                     borderRadius: '8px',
                     fontFamily: 'inherit',
                     fontSize: '0.80rem',
-                    color: '#252238'
+                    color: '#1F1F2E'
                   }}
                 />
                 <Bar dataKey="trips" fill="#E7D8FF" radius={[6, 6, 0, 0]} />
@@ -89,14 +89,14 @@ export default function UserTrends({ userGrowthData, tripsCreatedData, platformU
           <h3 className="ut-chart-title">Platform Usage</h3>
           <p className="ut-chart-subtitle">Distribution of features accessed by users</p>
           <div className="ut-chart-inner">
-            <ResponsiveContainer width="100%" height={220}>
+            <ResponsiveContainer width="100%" height={280}>
               <PieChart>
                 <Pie
                   data={platformUsageData}
                   cx="50%"
-                  cy="50%"
-                  innerRadius={50}
-                  outerRadius={70}
+                  cy="45%"
+                  innerRadius={60}
+                  outerRadius={85}
                   paddingAngle={3}
                   dataKey="value"
                 >
@@ -108,16 +108,16 @@ export default function UserTrends({ userGrowthData, tripsCreatedData, platformU
                   formatter={(value) => [`${value}%`, 'Usage Share']}
                   contentStyle={{
                     backgroundColor: '#FFFFFF',
-                    border: '1.5px solid #E7D8FF',
+                    border: '1px solid #ECECF2',
                     borderRadius: '8px',
                     fontFamily: 'inherit',
                     fontSize: '0.80rem',
-                    color: '#252238'
+                    color: '#1F1F2E'
                   }}
                 />
                 <Legend
                   verticalAlign="bottom"
-                  height={32}
+                  height={40}
                   iconType="circle"
                   iconSize={6}
                   formatter={(value) => <span className="ut-legend-text">{value}</span>}
@@ -129,24 +129,24 @@ export default function UserTrends({ userGrowthData, tripsCreatedData, platformU
 
         {/* Engagement Card */}
         <div className="utrends-chart-card engagement-card">
-          <h3 className="ut-chart-title">Engagement Metrics</h3>
+          <h3 className="ut-chart-title">Engagement</h3>
           <p className="ut-chart-subtitle">User interaction statistics</p>
 
           <div className="engagement-metrics-list">
             <div className="eng-metric-item">
-              <span className="eng-label">Avg. Trips Per User</span>
+              <span className="eng-label">Average trips per user</span>
               <span className="eng-val">4.2</span>
             </div>
             <div className="eng-metric-item">
-              <span className="eng-label">Avg. Activities Per Trip</span>
+              <span className="eng-label">Average activities per trip</span>
               <span className="eng-val">12.8</span>
             </div>
             <div className="eng-metric-item">
-              <span className="eng-label">Most Active Month</span>
+              <span className="eng-label">Most active month</span>
               <span className="eng-val">December</span>
             </div>
             <div className="eng-metric-item">
-              <span className="eng-label">Community Posts Created</span>
+              <span className="eng-label">Community posts</span>
               <span className="eng-val">840</span>
             </div>
           </div>

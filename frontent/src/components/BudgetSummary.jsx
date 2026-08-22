@@ -9,95 +9,88 @@ export default function BudgetSummary({ categoryTotals, totalExpense, plannedBud
   const formatCurrency = (val) => `₹${Math.abs(val).toLocaleString('en-IN')}`;
 
   return (
-    <section className="budget-summary-card" aria-labelledby="budget-summary-heading">
-      <header className="bs-header">
-        <h2 id="budget-summary-heading" className="bs-title">Trip Budget Summary</h2>
-        {isOverBudget ? (
-          <span className="bs-alert-badge over-budget">
-            ⚠️ You are {formatCurrency(remaining)} over budget
-          </span>
-        ) : (
-          <span className="bs-alert-badge under-budget">
-            ✓ Within budget ({formatCurrency(remaining)} remaining)
-          </span>
-        )}
-      </header>
-
-      {/* Main Budget Breakdown Table / List */}
-      <div className="bs-content-grid">
-        <div className="bs-table">
-          <div className="bs-row">
-            <span className="bs-label">🚗 Transport</span>
-            <span className="bs-value">{formatCurrency(categoryTotals.travel || 0)}</span>
-          </div>
-          <div className="bs-row">
-            <span className="bs-label">🏨 Stay / Hotel</span>
-            <span className="bs-value">{formatCurrency(categoryTotals.hotel || 0)}</span>
-          </div>
-          <div className="bs-row">
-            <span className="bs-label">🍽 Food & Dining</span>
-            <span className="bs-value">{formatCurrency(categoryTotals.food || 0)}</span>
-          </div>
-          <div className="bs-row">
-            <span className="bs-label">🏄 Activities & Sightseeing</span>
-            <span className="bs-value">{formatCurrency((categoryTotals.activities || 0) + (categoryTotals.sightseeing || 0) + (categoryTotals.adventure || 0))}</span>
-          </div>
-          <div className="bs-row">
-            <span className="bs-label">🛍 Other / Shopping</span>
-            <span className="bs-value">{formatCurrency((categoryTotals.shopping || 0) + (categoryTotals.other || 0))}</span>
-          </div>
-          <div className="bs-divider" />
-          <div className="bs-row bs-row-total">
-            <span className="bs-label-total">Total Expense</span>
-            <span className="bs-value-total">{formatCurrency(totalExpense)}</span>
-          </div>
+    <section className="budget-summary-sidebar" aria-labelledby="budget-summary-heading">
+      {/* Trip Summary Card */}
+      <div className="bs-section-box">
+        <h3 id="budget-summary-heading" className="bs-widget-title">Trip Summary</h3>
+        
+        <div className="bs-stat-item">
+          <span className="bs-stat-label">Budget</span>
+          <span className="bs-stat-value">{formatCurrency(plannedBudget)}</span>
         </div>
 
-        {/* Progress & Summary Overview Box */}
-        <div className="bs-overview-box">
-          <h3 className="bs-overview-title">Budget Usage</h3>
-          
-          <div className="bs-amount-row">
-            <span className="bs-amount-spent">{formatCurrency(totalExpense)}</span>
-            <span className="bs-amount-limit">/ {formatCurrency(plannedBudget)}</span>
-          </div>
+        <div className="bs-stat-item">
+          <span className="bs-stat-label">Spent / Estimated</span>
+          <span className="bs-stat-value">{formatCurrency(totalExpense)}</span>
+        </div>
 
-          {/* Progress Bar */}
+        <div className="bs-stat-item">
+          <span className="bs-stat-label">Remaining</span>
+          <span className={`bs-stat-value ${isOverBudget ? 'over-budget' : 'under-budget'}`}>
+            {formatCurrency(remaining)} {isOverBudget ? 'Over' : 'Remaining'}
+          </span>
+        </div>
+
+        {/* Progress Fill */}
+        <div className="bs-progress-section">
           <div className="bs-progress-track">
             <div
               className={`bs-progress-fill${isOverBudget ? ' is-over' : ''}`}
               style={{ width: `${percentUsed}%` }}
             />
           </div>
-
-          <div className="bs-percent-text">
-            <span>{percentUsed}% Used</span>
-            <span>{isOverBudget ? 'Over Limit' : `${100 - percentUsed}% Left`}</span>
+          <div className="bs-progress-pct-row">
+            <span>{percentUsed}% used</span>
+            {isOverBudget && <span className="bs-progress-alert">Over Limit</span>}
           </div>
         </div>
       </div>
 
-      {/* 4 Compact Category Breakdown Cards */}
-      <div className="bs-compact-cards-grid">
-        <div className="bs-card">
-          <span className="bs-card-icon">🚗</span>
-          <span className="bs-card-title">Transport</span>
-          <span className="bs-card-amount">{formatCurrency(categoryTotals.travel || 0)}</span>
-        </div>
-        <div className="bs-card">
-          <span className="bs-card-icon">🏨</span>
-          <span className="bs-card-title">Stay</span>
-          <span className="bs-card-amount">{formatCurrency(categoryTotals.hotel || 0)}</span>
-        </div>
-        <div className="bs-card">
-          <span className="bs-card-icon">🍽</span>
-          <span className="bs-card-title">Food</span>
-          <span className="bs-card-amount">{formatCurrency(categoryTotals.food || 0)}</span>
-        </div>
-        <div className="bs-card">
-          <span className="bs-card-icon">🏄</span>
-          <span className="bs-card-title">Activities</span>
-          <span className="bs-card-amount">{formatCurrency((categoryTotals.activities || 0) + (categoryTotals.sightseeing || 0) + (categoryTotals.adventure || 0))}</span>
+      {/* Trip Details Card */}
+      <div className="bs-section-box">
+        <h3 className="bs-widget-title">Trip Details</h3>
+        <ul className="bs-details-list">
+          <li className="bs-detail-item">
+            <span className="bs-detail-bullet">●</span>
+            <span className="bs-detail-text">8 Days</span>
+          </li>
+          <li className="bs-detail-item">
+            <span className="bs-detail-bullet">●</span>
+            <span className="bs-detail-text">3 Cities</span>
+          </li>
+          <li className="bs-detail-item">
+            <span className="bs-detail-bullet">●</span>
+            <span className="bs-detail-text">9 Activities</span>
+          </li>
+        </ul>
+      </div>
+
+      {/* Expenses Breakdown */}
+      <div className="bs-section-box">
+        <h3 className="bs-widget-title">Expenses Breakdown</h3>
+        <div className="bs-category-list">
+          <div className="bs-cat-item">
+            <span className="bs-cat-name">🚗 Transport</span>
+            <span className="bs-cat-val">{formatCurrency(categoryTotals.travel || 0)}</span>
+          </div>
+          <div className="bs-cat-item">
+            <span className="bs-cat-name">🏨 Stay / Hotel</span>
+            <span className="bs-cat-val">{formatCurrency(categoryTotals.hotel || 0)}</span>
+          </div>
+          <div className="bs-cat-item">
+            <span className="bs-cat-name">🍽 Food & Dining</span>
+            <span className="bs-cat-val">{formatCurrency(categoryTotals.food || 0)}</span>
+          </div>
+          <div className="bs-cat-item">
+            <span className="bs-cat-name">🏄 Activities</span>
+            <span className="bs-cat-val">{formatCurrency((categoryTotals.activities || 0) + (categoryTotals.sightseeing || 0) + (categoryTotals.adventure || 0))}</span>
+          </div>
+          {((categoryTotals.shopping || 0) + (categoryTotals.other || 0)) > 0 && (
+            <div className="bs-cat-item">
+              <span className="bs-cat-name">🛍 Other / Shopping</span>
+              <span className="bs-cat-val">{formatCurrency((categoryTotals.shopping || 0) + (categoryTotals.other || 0))}</span>
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -4,6 +4,8 @@ import SearchControls from '../components/SearchControls';
 import CityResultCard from '../components/CityResultCard';
 import ActivityResultCard from '../components/ActivityResultCard';
 import './Explore.css';
+import jaipurImage from '../assets/jaipur.jpg';
+import ladakhImage from '../assets/ladakh.jpg';
 
 // Dummy City Data
 const CITIES_DATA = [
@@ -33,7 +35,7 @@ const CITIES_DATA = [
     bestTime: 'Oct - Mar',
     type: 'India',
     tags: ['Heritage', 'Culture', 'Shopping'],
-    image: 'https://images.unsplash.com/photo-1477587458883-471a5ed942e5?auto=format&fit=crop&w=600&q=80'
+    image: jaipurImage
   },
   {
     id: 3,
@@ -75,7 +77,7 @@ const CITIES_DATA = [
     bestTime: 'May - Sep',
     type: 'India',
     tags: ['Adventure', 'Scenery', 'Trekking'],
-    image: 'https://images.unsplash.com/photo-1544085311-115edd9264b2?auto=format&fit=crop&w=600&q=80'
+    image: ladakhImage
   },
   {
     id: 6,
