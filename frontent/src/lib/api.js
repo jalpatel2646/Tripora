@@ -1,4 +1,7 @@
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1';
+let API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1';
+if (API_BASE && !API_BASE.endsWith('/api/v1')) {
+  API_BASE = API_BASE.replace(/\/$/, '') + '/api/v1';
+}
 
 async function request(path, options = {}) {
   const token = localStorage.getItem('tripora_access_token');
