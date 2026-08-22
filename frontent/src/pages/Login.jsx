@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { api, saveSession } from '../lib/api';
 import './Login.css';
 
 /* ─── SVG Icon helpers (inline, no external deps) ─── */
@@ -100,12 +102,15 @@ const validatePassword = (value) => {
 };
 
 export default function Login({ onRegister }) {
+  const navigate = useNavigate();
   const [email, setEmail]               = useState('');
   const [password, setPassword]         = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [emailError, setEmailError]     = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [touched, setTouched]           = useState({ email: false, password: false });
+  const [submitError, setSubmitError]   = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -127,7 +132,7 @@ export default function Login({ onRegister }) {
     setPasswordError(validatePassword(password));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const eErr = validateEmail(email);
     const pErr = validatePassword(password);
@@ -135,6 +140,11 @@ export default function Login({ onRegister }) {
     setPasswordError(pErr);
     setTouched({ email: true, password: true });
     if (!eErr && !pErr) {
+      setIsSubmitting(true); setSubmitError('');
+      try { const result = await api.login({ email, password }); saveSession(result.data); navigate('/'); }
+      catch (error) { setSubmitError(error.message); }
+      finally { setIsSubmitting(false); }
+      return;
       alert('Login successful! 🎉 (UI demo only)');
     }
   };
@@ -190,6 +200,7 @@ export default function Login({ onRegister }) {
           <p className="card-subtitle">Sign in to continue planning your next adventure.</p>
 
           <form className="login-form" onSubmit={handleSubmit} noValidate>
+            {submitError && <div className="error-msg" role="alert">{submitError}</div>}
             {/* Email */}
             <div className={`form-group${emailError && touched.email ? ' has-error' : ''}`}>
               <label htmlFor="login-email" className="form-label">Email Address</label>
@@ -247,7 +258,7 @@ export default function Login({ onRegister }) {
               </div>
             </div>
 
-            <button id="login-submit-btn" type="submit" className="login-btn">
+            <button id="login-submit-btn" type="submit" className="login-btn" disabled={isSubmitting}>
               Login
             </button>
           </form>

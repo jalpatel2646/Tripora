@@ -1,4 +1,6 @@
 import { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { api, saveSession } from '../lib/api';
 import './Register.css';
 
 /* ═══════════════════════════════════════════
@@ -172,6 +174,7 @@ function FieldGroup({ id, label, icon, error, touched, children }) {
    Main Component
    ═══════════════════════════════════════════ */
 export default function Register({ onLogin }) {
+  const navigate = useNavigate();
   const [form, setForm]               = useState(INITIAL_FORM);
   const [errors, setErrors]           = useState(INITIAL_ERRORS);
   const [touched, setTouched]         = useState(INITIAL_TOUCHED);
@@ -179,6 +182,8 @@ export default function Register({ onLogin }) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [photoSrc, setPhotoSrc]       = useState(null);
   const fileInputRef                  = useRef(null);
+  const [submitError, setSubmitError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = (name, value) => {
     const fn = rules[name];
@@ -205,13 +210,18 @@ export default function Register({ onLogin }) {
     reader.readAsDataURL(file);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const allTouched = Object.fromEntries(Object.keys(form).map((k) => [k, true]));
     const allErrors  = Object.fromEntries(Object.keys(form).map((k) => [k, validate(k, form[k])]));
     setTouched(allTouched);
     setErrors(allErrors);
     if (!Object.values(allErrors).some(Boolean)) {
+      setIsSubmitting(true); setSubmitError('');
+      try { const result = await api.register({ firstName: form.firstName, lastName: form.lastName, email: form.email, password: form.password, phone: form.phone, city: form.city, country: form.country, bio: form.bio }); saveSession(result.data); navigate('/'); }
+      catch (error) { setSubmitError(error.message); }
+      finally { setIsSubmitting(false); }
+      return;
       alert('Registration successful! 🎉 (UI demo only)');
     }
   };
@@ -293,6 +303,7 @@ export default function Register({ onLogin }) {
           <p className="rg-card-subtitle">Join Tripora and start planning your journeys.</p>
 
           <form className="rg-form" onSubmit={handleSubmit} noValidate>
+            {submitError && <div className="rg-error" role="alert">{submitError}</div>}
 
             {/* ── Personal Info ── */}
             <div className="rg-section-title">Personal Information</div>
@@ -354,7 +365,7 @@ export default function Register({ onLogin }) {
             </div>
 
             {/* ── Submit ── */}
-            <button id="rg-submit-btn" type="submit" className="rg-submit-btn">
+            <button id="rg-submit-btn" type="submit" className="rg-submit-btn" disabled={isSubmitting}>
               Create Account
             </button>
           </form>
