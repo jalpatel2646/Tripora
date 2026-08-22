@@ -2,26 +2,101 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 :root {
-  /* Premium Dark Theme Palette */
-  --c-ivory: #35383b;      /* Deep obsidian/navy background */
-  --c-lavender: #E7D8FF;    /* Brighter primary accents */
-  --c-periwinkle: #B8C0FF;
-  --c-light-sage: #1A1F24;  /* Dark surface color for cards */
-  --c-soft-sage: #BFD2B5;
-  --c-eucalyptus: #A7C4A0;
-  --c-muted-green: #8FB18A;
-  --landing-text-main: #F4F6F8; /* Brilliantly readable white/gray */
-  --landing-text-muted: #9BA3AF; /* Subtle light gray */
-  --c-text-main: #F4F6F8;
-  --c-text-muted: #9BA3AF;
+  /* =================================
+     BACKGROUNDS
+  ================================= */
 
-  /* Gradients */
-  --grad-primary: linear-gradient(135deg, #7A5CFF, #5C75FF); /* Vivid dark-friendly gradients */
-  --grad-natural: linear-gradient(135deg, var(--c-muted-green), var(--c-eucalyptus));
+  --tripora-ivory: #F4EFE6;
+  --tripora-white: #FFFDF9;
+  --tripora-cloud: #FAF8F4;
 
-  /* Typography Variables */
-  --font-display: 'Playfair Display', serif; /* Acting as Moon Berry */
-  --font-func: 'Manrope', 'Inter', sans-serif;
+  /* =================================
+     BRAND
+  ================================= */
+
+  --tripora-lavender: #E7D8FF;
+  --tripora-periwinkle: #B8C0FF;
+  --tripora-mist-blue: #DDE1FF;
+
+  /* =================================
+     NATURE
+  ================================= */
+
+  --tripora-light-sage: #DCE6D3;
+  --tripora-soft-sage: #BFD2B5;
+  --tripora-eucalyptus: #D5E4D0;
+  --tripora-mist-green: #E6F0E1;
+
+  /* =================================
+     WARM ACCENTS
+  ================================= */
+
+  --tripora-peach: #FFD6B8;
+  --tripora-coral: #FFC8B8;
+  --tripora-champagne: #F3D9A6;
+
+  /* =================================
+     TEXT
+  ================================= */
+
+  --tripora-text: #403E3A;
+  --tripora-text-secondary: #77736B;
+  --tripora-text-muted: #A29D94;
+
+  /* =================================
+     BORDERS
+  ================================= */
+
+  --tripora-border: #E4DED4;
+  --tripora-border-light: #EEEAE3;
+
+  /* =================================
+     GRADIENTS
+  ================================= */
+
+  --tripora-gradient-brand:
+    linear-gradient(
+      135deg,
+      #E7D8FF,
+      #B8C0FF
+    );
+
+  --tripora-gradient-nature:
+    linear-gradient(
+      135deg,
+      #F0EEFF,
+      #DDE1FF,
+      #B8C0FF
+    );
+
+  --tripora-gradient-dream:
+    linear-gradient(
+      135deg,
+      #F4EFE6,
+      #E7D8FF,
+      #DDE1FF
+    );
+
+  --tripora-gradient-action:
+    linear-gradient(
+      135deg,
+      #E7D8FF,
+      #B8C0FF
+    );
+
+  /* Legacy component aliases — keep every landing section on one palette. */
+  --c-ivory: #F8F6FF;
+  --c-light-sage: #F0EEFF;
+  --c-light-cage: #461640;
+  --c-lavender: var(--tripora-lavender);
+  --c-periwinkle: var(--tripora-periwinkle);
+  --c-muted-green: #7D87D9;
+  --c-text-main: #2F3150;
+  --landing-text-main: #2F3150;
+  --landing-text-muted: #686B88;
+  --grad-primary: var(--tripora-gradient-brand);
+  --font-display: 'Playfair Display', serif;
+  --font-func: 'Manrope', sans-serif;
 }
 
 body {
@@ -72,10 +147,11 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1.25rem 4rem;
-  background: rgba(13, 15, 18, 0.85); /* Dark base */
+  background: linear-gradient(135deg, rgba(231, 216, 255, .96), rgba(184, 192, 255, .94));
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(47, 49, 80, .14);
+  box-shadow: 0 10px 30px rgba(77, 82, 150, .16);
   z-index: 1000;
   transition: all 0.3s ease;
 }
@@ -302,7 +378,12 @@ body {
 .dark-sec { border-color: var(--c-text-main); color: var(--c-text-main); }
 .dark-sec:hover { background: rgba(255,255,255,0.1); }
 
-.landing-footer { background: var(--c-light-sage); padding: 6rem 4rem 2rem; color: var(--c-text-main); }
+.landing-footer {
+  background: linear-gradient(135deg, #E7D8FF 0%, #B8C0FF 100%);
+  padding: 6rem 4rem 2rem;
+  color: var(--c-text-main);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .55);
+}
 .footer-grid { display: flex; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding-bottom: 4rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .foot-brand h2 { margin: 0 0 0.5rem; font-size: 2rem; }
 .foot-brand p { color: var(--landing-text-muted); margin-bottom: 1.5rem; }
