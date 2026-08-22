@@ -18,6 +18,7 @@ import CalendarView from './pages/CalendarView';
 import AdminDashboard from './pages/AdminDashboard';
 import AITripPlanner from './pages/AITripPlanner';
 import Landing from './pages/Landing';
+import PackingList from './pages/PackingList';
 
 // Client-side wrappers to preserve SPA navigation
 function LoginWrapper() {
@@ -61,6 +62,9 @@ function App() {
 
         {/* AI Trip Planner Screen */}
         <Route path="/ai-planner" element={<AITripPlanner />} />
+
+        {/* Smart Packing List Screen */}
+        <Route path="/trip/:id/packing" element={<PackingList />} />
 
         {/* Auth routes */}
         <Route path="/login" element={<LoginWrapper />} />

@@ -1,0 +1,112 @@
+/* src/components/weather/WeatherAlternatives.css */
+.weather-alternatives-card {
+  margin-top: 14px;
+  background-color: #FAFAFC;
+  border: 1px solid #ECECF2;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.alternatives-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1F1F2E;
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.alternatives-scroll-list {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scroll-snap-type: x mandatory;
+}
+
+.alternatives-scroll-list::-webkit-scrollbar {
+  height: 6px;
+}
+
+.alternatives-scroll-list::-webkit-scrollbar-track {
+  background: #FAFAFC;
+}
+
+.alternatives-scroll-list::-webkit-scrollbar-thumb {
+  background: #E7D8FF;
+  border-radius: 4px;
+}
+
+.alt-item-card {
+  flex: 0 0 240px;
+  background-color: #FFFFFF;
+  border: 1px solid #ECECF2;
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scroll-snap-align: start;
+}
+
+.alt-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alt-item-badge {
+  font-size: 9px;
+  font-weight: 700;
+  color: #6C5CE7;
+  background-color: #E7D8FF;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.alt-item-cost {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1F1F2E;
+}
+
+.alt-item-name {
+  font-size: 13.5px;
+  font-weight: 650;
+  color: #1F1F2E;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.alt-item-desc {
+  font-size: 11.5px;
+  color: #777789;
+  line-height: 1.4;
+  margin: 0;
+  flex: 1;
+}
+
+.alt-item-duration {
+  font-size: 11px;
+  color: #777789;
+}
+
+.alt-replace-action-btn {
+  background-color: #B8C0FF;
+  color: #1F1F2E;
+  border: none;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.alt-replace-action-btn:hover {
+  background-color: #a4adfc;
+}

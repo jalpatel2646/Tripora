@@ -1,0 +1,50 @@
+/* src/components/packing/PackingProgress.css */
+.packing-progress-bar-card {
+  background-color: #FFFFFF;
+  border: 1px solid #ECECF2;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(31, 31, 46, 0.02);
+  margin-top: 14px;
+}
+
+.progress-bar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 13.5px;
+  color: #1F1F2E;
+}
+
+.progress-track-wrapper {
+  height: 8px;
+  background-color: #FAFAFC;
+  border: 1px solid #ECECF2;
+  border-radius: 6px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.progress-fill-indicator {
+  height: 100%;
+  background-color: #B8C0FF;
+  border-radius: 6px;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-fill-indicator.is-complete {
+  background-color: #10B981;
+}
+
+.packing-complete-toast {
+  margin-top: 12px;
+  background-color: #ECFDF5;
+  border: 1px solid #10B981;
+  color: #065F46;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 12.5px;
+  font-weight: 650;
+  text-align: center;
+}

@@ -1,0 +1,60 @@
+/* src/components/packing/PackingCategory.css */
+.packing-category-section {
+  background-color: #FFFFFF;
+  border: 1px solid #ECECF2;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(31, 31, 46, 0.01);
+}
+
+.cat-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  user-select: none;
+}
+
+.cat-header-row:hover {
+  background-color: #FAFAFC;
+}
+
+.cat-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cat-title {
+  font-size: 14.5px;
+  font-weight: 750;
+  color: #1F1F2E;
+  margin: 0;
+  letter-spacing: -0.3px;
+  text-transform: uppercase;
+}
+
+.cat-progress-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: #777789;
+  background-color: #FAFAFC;
+  border: 1px solid #ECECF2;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.cat-collapse-arrow {
+  font-size: 11px;
+  color: #777789;
+}
+
+.cat-items-list-container {
+  border-top: 1px solid #ECECF2;
+  padding: 14px 20px;
+  background-color: #FFFFFF;
+}

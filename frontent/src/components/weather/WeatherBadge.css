@@ -1,0 +1,28 @@
+/* src/components/weather/WeatherBadge.css */
+.weather-suit-badge {
+  font-size: 10px;
+  font-weight: 750;
+  padding: 3px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+
+.weather-suit-badge.suit-good {
+  background-color: #ECFDF5;
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.weather-suit-badge.suit-fair {
+  background-color: #FFFBEB;
+  color: #FBBF24;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+.weather-suit-badge.suit-poor {
+  background-color: #FEF2F2;
+  color: #EF4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}

@@ -1,0 +1,22 @@
+/* src/components/weather/DayWeather.css */
+.day-weather-summary-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #FAFAFC;
+  border: 1px solid #ECECF2;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 550;
+  color: #777789;
+}
+
+.day-weather-icon {
+  font-size: 14px;
+}
+
+.day-weather-temp {
+  color: #1F1F2E;
+  font-weight: 650;
+}

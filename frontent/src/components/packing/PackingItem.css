@@ -1,0 +1,222 @@
+/* src/components/packing/PackingItem.css */
+.packing-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #FFFFFF;
+  border: 1px solid #ECECF2;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.packing-item-row:hover {
+  border-color: #B8C0FF;
+  box-shadow: 0 2px 8px rgba(184, 192, 255, 0.08);
+}
+
+.packing-item-row.is-packed {
+  background-color: #FAFAFC;
+  border-color: #ECECF2;
+}
+
+.packing-item-row.is-packed .item-label-name {
+  text-decoration: line-through;
+  color: #777789;
+}
+
+.item-left-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Custom Checkbox Design */
+.checkbox-container-wrap {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  gap: 12px;
+  font-family: inherit;
+  flex: 1;
+  min-width: 0;
+}
+
+.item-checkbox-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox-custom-check {
+  height: 18px;
+  width: 18px;
+  background-color: #FFFFFF;
+  border: 1.5px solid #ECECF2;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  transition: all 0.18s;
+  flex-shrink: 0;
+}
+
+.checkbox-container-wrap:hover .checkbox-custom-check {
+  border-color: #B8C0FF;
+}
+
+.item-checkbox-input:checked ~ .checkbox-custom-check {
+  background-color: #B8C0FF;
+  border-color: #B8C0FF;
+}
+
+.checkbox-custom-check::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid #1F1F2E;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.item-checkbox-input:checked ~ .checkbox-custom-check::after {
+  display: block;
+}
+
+.item-label-name {
+  font-size: 13.5px;
+  color: #1F1F2E;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Why? tooltip popover */
+.why-recommendation-popover-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.why-trigger-link {
+  background: none;
+  border: none;
+  color: #6C5CE7;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.why-trigger-link:hover {
+  text-decoration: underline;
+  background-color: #F0EDFF;
+}
+
+.why-text-bubble-box {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 8px;
+  background-color: #1F1F2E;
+  color: #FFFFFF;
+  font-size: 11px;
+  border-radius: 6px;
+  padding: 8px 12px;
+  z-index: 100;
+  width: 200px;
+  line-height: 1.4;
+  box-shadow: 0 4px 14px rgba(31, 31, 46, 0.16);
+}
+
+.why-text-bubble-box::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 12px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #1F1F2E transparent transparent transparent;
+}
+
+/* Right cell action items */
+.item-right-cell {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.item-qty-selector {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #ECECF2;
+  border-radius: 6px;
+  overflow: hidden;
+  height: 28px;
+  background-color: #FFFFFF;
+}
+
+.qty-action-btn {
+  background: none;
+  border: none;
+  width: 26px;
+  height: 100%;
+  cursor: pointer;
+  font-size: 12px;
+  color: #1F1F2E;
+  font-weight: bold;
+}
+
+.qty-action-btn:hover:not(:disabled) {
+  background-color: #FAFAFC;
+}
+
+.qty-action-btn:disabled {
+  opacity: 0.3;
+}
+
+.qty-number-display {
+  font-size: 12px;
+  font-weight: 600;
+  width: 24px;
+  text-align: center;
+  border-left: 1px solid #ECECF2;
+  border-right: 1px solid #ECECF2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1F1F2E;
+}
+
+.item-row-delete-btn {
+  background: none;
+  border: none;
+  color: #777789;
+  cursor: pointer;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  padding: 4px;
+}
+
+.packing-item-row:hover .item-row-delete-btn {
+  opacity: 0.8;
+}
+
+.item-row-delete-btn:hover {
+  opacity: 1 !important;
+  color: #EF4444;
+}

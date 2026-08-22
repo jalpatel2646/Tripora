@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import ActivityRow from './ActivityRow';
+import DayWeather from './weather/DayWeather';
 import './ItineraryDay.css';
 
-export default function ItineraryDay({ dayData }) {
+export default function ItineraryDay({ dayData, weather, otherDays, onReplaceActivity, onMoveActivity }) {
   const { day, date, city, activities = [] } = dayData;
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -20,6 +21,7 @@ export default function ItineraryDay({ dayData }) {
             <h3 id={`day-heading-${day}`} className="id-date">{date}</h3>
             {city && <span className="id-city">• {city}</span>}
           </div>
+          {weather && <DayWeather weather={weather} />}
         </div>
 
         <div className="id-header-right">
@@ -59,6 +61,10 @@ export default function ItineraryDay({ dayData }) {
                 key={act.id || index}
                 activity={act}
                 isLast={index === activities.length - 1}
+                weather={weather}
+                otherDays={otherDays}
+                onReplace={onReplaceActivity}
+                onMove={(toDay, a) => onMoveActivity(day, toDay, a)}
               />
             ))}
           </div>

@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import ItineraryControls from '../components/ItineraryControls';
 import ItineraryDay from '../components/ItineraryDay';
 import BudgetSummary from '../components/BudgetSummary';
+import TripWeatherSummary from '../components/weather/TripWeatherSummary';
+import { getTripWeather, getWeatherSuitability } from '../services/weatherService';
 import './ItineraryView.css';
 
 // Initial Itinerary Dummy Data
@@ -112,6 +115,11 @@ const INITIAL_ITINERARY = [
 ];
 
 export default function ItineraryView() {
+  const navigate = useNavigate();
+  const [itinerary, setItinerary] = useState(INITIAL_ITINERARY);
+  const [weatherData, setWeatherData] = useState({});
+  const [loadingWeather, setLoadingWeather] = useState(true);
+
   // Filter & Search Controls State
   const [search, setSearch]     = useState('');
   const [groupBy, setGroupBy]   = useState('day');
@@ -121,9 +129,56 @@ export default function ItineraryView() {
 
   const plannedBudget = 50000;
 
+  useEffect(() => {
+    getTripWeather(itinerary).then((res) => {
+      setWeatherData(res);
+      setLoadingWeather(false);
+    });
+  }, []);
+
+  // Callback to replace an activity with an indoor alternative
+  const handleReplaceActivity = (dayNum, oldActivityId, newAlt) => {
+    const updated = itinerary.map((dayObj) => {
+      if (dayObj.day !== dayNum) return dayObj;
+      const activities = dayObj.activities.map((act) => {
+        if (act.id !== oldActivityId) return act;
+        return {
+          id: `alt-${Date.now()}`,
+          time: act.time,
+          name: newAlt.name,
+          type: newAlt.type,
+          duration: newAlt.duration,
+          description: newAlt.description,
+          expense: newAlt.cost
+        };
+      });
+      return { ...dayObj, activities };
+    });
+    setItinerary(updated);
+  };
+
+  // Callback to reschedule an activity to another day
+  const handleMoveActivity = (fromDayNum, toDayNum, activity) => {
+    const updated = itinerary.map((dayObj) => {
+      if (dayObj.day === fromDayNum) {
+        return {
+          ...dayObj,
+          activities: dayObj.activities.filter((act) => act.id !== activity.id)
+        };
+      }
+      if (dayObj.day === toDayNum) {
+        // Find existing activities for the day to sort by time properly
+        const activities = [...dayObj.activities, { ...activity, id: `move-${Date.now()}` }];
+        return { ...dayObj, activities };
+      }
+      return dayObj;
+    });
+    setItinerary(updated);
+  };
+
   // Process itinerary filter and sort logic
   const getProcessedDays = () => {
-    return INITIAL_ITINERARY.map((dayObj) => {
+    return itinerary.map((dayObj) => {
       let activities = [...dayObj.activities];
 
       // 1. Search Filter
@@ -158,12 +213,12 @@ export default function ItineraryView() {
   const processedDays = getProcessedDays();
 
   // Calculate dynamic overall total expense
-  const totalExpense = INITIAL_ITINERARY.reduce((tripTotal, dayObj) => {
+  const totalExpense = itinerary.reduce((tripTotal, dayObj) => {
     return tripTotal + dayObj.activities.reduce((dayTotal, act) => dayTotal + (parseFloat(act.expense) || 0), 0);
   }, 0);
 
   // Calculate totals by category
-  const categoryTotals = INITIAL_ITINERARY.reduce((acc, dayObj) => {
+  const categoryTotals = itinerary.reduce((acc, dayObj) => {
     dayObj.activities.forEach((act) => {
       const typeKey = act.type.toLowerCase();
       acc[typeKey] = (acc[typeKey] || 0) + (parseFloat(act.expense) || 0);
@@ -171,7 +226,25 @@ export default function ItineraryView() {
     return acc;
   }, {});
 
-  const totalActivitiesCount = INITIAL_ITINERARY.reduce((sum, d) => sum + d.activities.length, 0);
+  const totalActivitiesCount = itinerary.reduce((sum, d) => sum + d.activities.length, 0);
+
+  // Analyze itinerary suitability to count poor weather occurrences
+  const getAffectedCount = () => {
+    let count = 0;
+    if (loadingWeather) return 0;
+    itinerary.forEach((dayObj) => {
+      const weather = weatherData[dayObj.day];
+      if (!weather) return;
+      dayObj.activities.forEach((act) => {
+        if (getWeatherSuitability(act, weather) === 'POOR') {
+          count++;
+        }
+      });
+    });
+    return count;
+  };
+
+  const affectedCount = getAffectedCount();
 
   return (
     <div className="iv-page-container">
@@ -202,6 +275,13 @@ export default function ItineraryView() {
               <div className="iv-header-actions">
                 <button type="button" className="btn-action-ghost">Edit</button>
                 <button type="button" className="btn-action-ghost">Share</button>
+                <button
+                  type="button"
+                  className="btn-action-packing"
+                  onClick={() => navigate('/trip/1/packing')}
+                >
+                  🧳 Packing List
+                </button>
                 <button type="button" className="btn-action-dots" aria-label="More options">•••</button>
               </div>
             </div>
@@ -254,6 +334,16 @@ export default function ItineraryView() {
             </div>
           </header>
 
+          {!loadingWeather && (
+            <TripWeatherSummary
+              weatherData={weatherData}
+              itinerary={itinerary}
+              affectedCount={affectedCount}
+              onReplaceActivity={handleReplaceActivity}
+              onMoveActivity={handleMoveActivity}
+            />
+          )}
+
           {/* ── 4 - 9. Main Itinerary Day-wise List (Or Calendar Placeholder) ── */}
           {viewMode === 'list' ? (
             <div className="iv-content-layout">
@@ -267,9 +357,26 @@ export default function ItineraryView() {
 
                 {processedDays.length > 0 ? (
                   <div className="iv-days-list">
-                    {processedDays.map((dayData) => (
-                      <ItineraryDay key={dayData.day} dayData={dayData} />
-                    ))}
+                    {processedDays.map((dayData) => {
+                      const otherDays = itinerary
+                        .filter((d) => d.day !== dayData.day)
+                        .map((d) => ({
+                          day: d.day,
+                          date: d.date,
+                          weather: weatherData[d.day]
+                        }));
+
+                      return (
+                        <ItineraryDay
+                          key={dayData.day}
+                          dayData={dayData}
+                          weather={weatherData[dayData.day]}
+                          otherDays={otherDays}
+                          onReplaceActivity={(actId, newAlt) => handleReplaceActivity(dayData.day, actId, newAlt)}
+                          onMoveActivity={handleMoveActivity}
+                        />
+                      );
+                    })}
                   </div>
                 ) : (
                   <div className="iv-empty-state">
