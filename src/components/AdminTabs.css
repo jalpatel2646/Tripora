@@ -1,0 +1,51 @@
+/* AdminTabs.css */
+.adm-tabs-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--white, #FFFFFF);
+  border: 1.5px solid var(--light-purple, #E7D8FF);
+  border-radius: 16px;
+  padding: 6px;
+  box-shadow: 0 4px 16px rgba(37, 34, 56, 0.04);
+  flex-wrap: wrap;
+}
+
+.adm-tab-btn {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--muted-text, #6B6880);
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  flex: 1;
+  text-align: center;
+}
+
+.adm-tab-btn.is-active {
+  background-color: var(--primary-purple, #B8C0FF);
+  color: var(--dark-text, #252238);
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(184, 192, 255, 0.4);
+}
+
+.adm-tab-btn:not(.is-active):hover {
+  background-color: var(--light-purple, #E7D8FF);
+  color: var(--dark-text, #252238);
+}
+
+@media (max-width: 768px) {
+  .adm-tabs-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .adm-tab-btn {
+    flex: none;
+  }
+}

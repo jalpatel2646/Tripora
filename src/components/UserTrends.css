@@ -1,0 +1,90 @@
+/* UserTrends.css */
+.utrends-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.utrends-charts-grid,
+.utrends-usage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.utrends-chart-card {
+  background-color: var(--white, #FFFFFF);
+  border: 1.5px solid var(--light-purple, #E7D8FF);
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 4px 16px rgba(37, 34, 56, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.ut-chart-title {
+  font-size: 1.05rem;
+  font-weight: 850;
+  color: var(--dark-text, #252238);
+}
+
+.ut-chart-subtitle {
+  font-size: 0.80rem;
+  color: var(--muted-text, #6B6880);
+  margin-bottom: 14px;
+}
+
+.ut-chart-inner {
+  width: 100%;
+}
+
+.ut-legend-text {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--dark-text, #252238);
+}
+
+/* Engagement Card */
+.engagement-card {
+  background-color: var(--white, #FFFFFF);
+}
+
+.engagement-metrics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.eng-metric-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-light, #F9F8FF);
+  border: 1px solid var(--light-purple, #E7D8FF);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.eng-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--muted-text, #6B6880);
+}
+
+.eng-val {
+  font-size: 1.05rem;
+  font-weight: 850;
+  color: var(--dark-text, #252238);
+}
+
+@media (max-width: 768px) {
+  .utrends-charts-grid,
+  .utrends-usage-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

@@ -1,0 +1,104 @@
+/* CalendarControls.css */
+.cal-controls-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cal-search-bar {
+  flex: 1;
+  min-width: 300px;
+  height: 48px;
+  background-color: var(--white, #FFFFFF);
+  border: 1.5px solid var(--light-purple, #E7D8FF);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(37, 34, 56, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cal-search-bar:focus-within {
+  border-color: var(--primary-purple, #B8C0FF);
+  box-shadow: 0 8px 24px rgba(184, 192, 255, 0.18);
+}
+
+.cal-search-icon { font-size: 0.95rem; opacity: 0.7; }
+
+.cal-search-input {
+  flex: 1;
+  border: none;
+  background: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.90rem;
+  color: var(--dark-text, #252238);
+}
+
+.cal-search-input::placeholder { color: var(--muted-text, #6B6880); opacity: 0.7; }
+
+.cal-clear-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted-text, #6B6880);
+  font-size: 0.85rem;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cal-clear-btn:hover { background-color: var(--light-purple, #E7D8FF); }
+
+.cal-dropdowns-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cal-control-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--white, #FFFFFF);
+  border: 1.5px solid var(--light-purple, #E7D8FF);
+  border-radius: 10px;
+  padding: 0 12px;
+  height: 44px;
+  box-shadow: 0 2px 8px rgba(37, 34, 56, 0.04);
+  transition: border-color 0.2s ease;
+}
+.cal-control-box:hover { border-color: var(--primary-purple, #B8C0FF); }
+
+.cal-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--muted-text, #6B6880);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.cal-select {
+  border: none;
+  background: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--dark-text, #252238);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .cal-search-bar { min-width: 100%; }
+  .cal-dropdowns-group { width: 100%; }
+  .cal-control-box { flex: 1; min-width: 100px; height: 40px; }
+}

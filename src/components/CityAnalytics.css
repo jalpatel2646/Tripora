@@ -1,0 +1,101 @@
+/* CityAnalytics.css */
+.city-analytics-card {
+  background-color: var(--white, #FFFFFF);
+  border: 1.5px solid var(--light-purple, #E7D8FF);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(37, 34, 56, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ca-title {
+  font-size: 1.15rem;
+  font-weight: 850;
+  color: var(--dark-text, #252238);
+}
+
+.ca-subtitle {
+  font-size: 0.84rem;
+  color: var(--muted-text, #6B6880);
+  margin-bottom: 20px;
+}
+
+.ca-grid-content {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.ca-chart-wrapper {
+  width: 100%;
+}
+
+/* Ranked list */
+.ca-ranked-list {
+  background-color: var(--bg-light, #F9F8FF);
+  border: 1px solid var(--light-purple, #E7D8FF);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.ca-list-title {
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: var(--dark-text, #252238);
+  margin-bottom: 12px;
+}
+
+.ca-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ca-list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--white, #FFFFFF);
+  border: 1.5px solid #F0EDFF;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.ca-rank-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  background-color: var(--primary-purple, #B8C0FF);
+  color: var(--dark-text, #252238);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ca-item-name {
+  font-size: 0.86rem;
+  font-weight: 750;
+  color: var(--dark-text, #252238);
+  flex: 1;
+}
+
+.ca-item-count {
+  font-size: 0.78rem;
+  font-weight: 650;
+  color: var(--muted-text, #6B6880);
+}
+
+@media (max-width: 768px) {
+  .ca-grid-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

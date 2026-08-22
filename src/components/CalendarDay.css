@@ -1,0 +1,150 @@
+/* CalendarDay.css */
+.cal-day-cell {
+  min-height: 100px;
+  background-color: var(--white, #FFFFFF);
+  border: 1px solid #F0EDFF;
+  border-radius: 10px;
+  padding: 8px 6px 6px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: background-color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cal-day-cell:hover {
+  background-color: rgba(184, 192, 255, 0.06);
+  border-color: var(--primary-purple, #B8C0FF);
+  box-shadow: 0 4px 14px rgba(184, 192, 255, 0.18);
+}
+
+/* Other month faded */
+.cal-day-cell.other-month {
+  background-color: transparent;
+  opacity: 0.35;
+}
+
+/* Today highlight */
+.cal-day-cell.is-today {
+  background-color: rgba(184, 192, 255, 0.10);
+  border-color: var(--primary-purple, #B8C0FF);
+}
+
+/* Selected */
+.cal-day-cell.is-selected {
+  background-color: rgba(184, 192, 255, 0.20);
+  border-color: #6C5CE7;
+  box-shadow: 0 4px 16px rgba(108, 92, 231, 0.15);
+}
+
+/* Day Number */
+.cal-day-number-wrap {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 2px;
+}
+
+.cal-day-number {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--dark-text, #252238);
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cal-day-number.today-circle {
+  background-color: var(--primary-purple, #B8C0FF);
+  color: var(--dark-text, #252238);
+  font-weight: 850;
+  box-shadow: 0 2px 8px rgba(184, 192, 255, 0.5);
+}
+
+.cal-day-cell.is-selected .cal-day-number {
+  background-color: #6C5CE7;
+  color: #FFFFFF;
+}
+
+/* Events Container */
+.cal-day-events {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+/* Event Chip */
+.cal-event-chip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 7px;
+  border-radius: 5px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  border-left: 3px solid var(--primary-purple, #B8C0FF);
+  background-color: var(--light-purple, #E7D8FF);
+  color: var(--dark-text, #252238);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Type-based accent colours */
+.cal-event-chip.type-travel     { border-left-color: #B8C0FF; background-color: #E7D8FF; }
+.cal-event-chip.type-hotel      { border-left-color: #93C5FD; background-color: #DBEAFE; }
+.cal-event-chip.type-food       { border-left-color: #FCA5A5; background-color: #FEE2E2; }
+.cal-event-chip.type-activity   { border-left-color: #6EE7B7; background-color: #D1FAE5; }
+.cal-event-chip.type-trip       { border-left-color: #B8C0FF; background-color: #E7D8FF; }
+.cal-event-chip.type-sightseeing { border-left-color: #C084FC; background-color: #F3E8FF; }
+.cal-event-chip.type-adventure  { border-left-color: #FCD34D; background-color: #FEF9C3; }
+
+.cal-event-icon {
+  font-size: 0.68rem;
+  flex-shrink: 0;
+}
+
+.cal-event-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  font-size: 0.65rem;
+}
+
+.cal-overflow-chip {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--muted-text, #6B6880);
+  padding: 2px 6px;
+  background-color: #F0EDFF;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+
+/* Mobile: shrink cells */
+@media (max-width: 640px) {
+  .cal-day-cell {
+    min-height: 56px;
+    padding: 5px 4px 4px;
+    border-radius: 6px;
+  }
+  .cal-day-number {
+    font-size: 0.76rem;
+    width: 22px;
+    height: 22px;
+  }
+  .cal-event-chip {
+    padding: 2px 5px;
+    font-size: 0.58rem;
+  }
+  .cal-event-label {
+    display: none;
+  }
+}

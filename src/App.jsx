@@ -8,6 +8,9 @@ import MyTrips from './pages/MyTrips';
 import Profile from './pages/Profile';
 import Explore from './pages/Explore';
 import ItineraryView from './pages/ItineraryView';
+import Community from './pages/Community';
+import CalendarView from './pages/CalendarView';
+import AdminDashboard from './pages/AdminDashboard';
 
 // Client-side wrappers to preserve SPA navigation
 function LoginWrapper() {
@@ -38,6 +41,15 @@ function App() {
 
         {/* Itinerary View Screen with Budget Section */}
         <Route path="/itinerary-view" element={<ItineraryView />} />
+
+        {/* Community Tab Screen */}
+        <Route path="/community" element={<Community />} />
+
+        {/* Calendar View Screen */}
+        <Route path="/calendar" element={<CalendarView />} />
+
+        {/* Admin Panel / Analytics Dashboard */}
+        <Route path="/admin" element={<AdminDashboard />} />
 
         {/* Auth routes */}
         <Route path="/login" element={<LoginWrapper />} />
