@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import triporaLogo from '../assets/tripora_logo.png';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -12,9 +13,7 @@ export default function Navbar() {
       <div className="navbar-container">
         {/* Logo */}
         <Link to="/home" className="navbar-logo" aria-label="Tripora Home">
-          <span className="logo-icon" aria-hidden="true">✈</span>
-          <span className="logo-text">Tripora</span>
-
+          <img src={triporaLogo} alt="Tripora" className="navbar-logo-img" />
         </Link>
 
         {/* Links */}
