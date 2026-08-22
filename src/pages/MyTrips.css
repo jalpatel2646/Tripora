@@ -1,0 +1,233 @@
+/* MyTrips.css — Screen 6 User Trips Dashboard */
+
+:root {
+  --primary-purple:  #B8C0FF;
+  --light-purple:    #E7D8FF;
+  --dark-text:       #252238;
+  --muted-text:      #6B6880;
+  --white:           #FFFFFF;
+  --bg-light:        #F9F8FF;
+  
+  --radius-lg:       20px;
+  --radius-md:       12px;
+  --radius-sm:       8px;
+  
+  --transition:      0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-sm:       0 4px 16px rgba(37, 34, 56, 0.04);
+  --shadow-md:       0 8px 24px rgba(184, 192, 255, 0.20);
+  --shadow-hover:    0 12px 32px rgba(184, 192, 255, 0.35);
+}
+
+.my-trips-page {
+  min-height: 100vh;
+  background-color: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+}
+
+.my-trips-main {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 36px 0 64px;
+}
+
+.my-trips-container {
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ── Header ── */
+.my-trips-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.page-title {
+  font-size: 2.2rem;
+  font-weight: 850;
+  color: var(--dark-text);
+  letter-spacing: -0.8px;
+}
+
+.page-subtitle {
+  font-size: 0.95rem;
+  color: var(--muted-text);
+}
+
+/* Plan New Trip Button */
+.plan-new-trip-btn {
+  background-color: var(--primary-purple);
+  color: var(--dark-text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 750;
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(184, 192, 255, 0.4);
+  transition: transform var(--transition), background-color var(--transition), box-shadow var(--transition);
+  white-space: nowrap;
+}
+
+.plan-new-trip-btn:hover {
+  background-color: #A3ADFF;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ── Trips Sections Wrapper ── */
+.trips-sections-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.trips-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--dark-text);
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-count {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--muted-text);
+}
+
+.section-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Section empty box */
+.section-empty-box {
+  background-color: var(--white);
+  border: 1.5px dashed var(--light-purple);
+  border-radius: var(--radius-md);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--muted-text);
+  font-size: 0.92rem;
+}
+
+.section-empty-btn {
+  background-color: var(--light-purple);
+  color: var(--dark-text);
+  border: none;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.section-empty-btn:hover {
+  background-color: var(--primary-purple);
+  transform: translateY(-1px);
+}
+
+/* ── Overall Empty State ── */
+.empty-trips-container {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--light-purple);
+  padding: 56px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  margin-top: 12px;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--dark-text);
+  margin-bottom: 8px;
+}
+
+.empty-subtitle {
+  font-size: 0.95rem;
+  color: var(--muted-text);
+  max-width: 420px;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.empty-action-btn {
+  background-color: var(--primary-purple);
+  color: var(--dark-text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 750;
+  border: none;
+  padding: 12px 28px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(184, 192, 255, 0.4);
+  transition: transform var(--transition), background-color var(--transition);
+}
+
+.empty-action-btn:hover {
+  background-color: #A3ADFF;
+  transform: translateY(-2px);
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE DESIGN
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .my-trips-main {
+    padding: 24px 0 48px;
+  }
+  .my-trips-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .plan-new-trip-btn {
+    width: 100%;
+    text-align: center;
+  }
+  .section-empty-box {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}

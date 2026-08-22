@@ -76,8 +76,15 @@ export default function CreateTrip() {
     setFormErrors(errors);
 
     if (Object.keys(errors).length === 0) {
-      alert(`Trip Plan "${tripName}" created successfully with ${addedActivities.length} selected activities! 🎉`);
-      navigate('/build-itinerary');
+      const draft = {
+        tripName,
+        place,
+        startDate,
+        endDate,
+        addedActivities
+      };
+      localStorage.setItem('tripora_draft_trip', JSON.stringify(draft));
+      navigate('/build-itinerary', { state: draft });
     }
   };
 

@@ -4,6 +4,7 @@ import Register from './pages/Register';
 import Home from './pages/Home';
 import CreateTrip from './pages/CreateTrip';
 import BuildItinerary from './pages/BuildItinerary';
+import MyTrips from './pages/MyTrips';
 
 // Client-side wrappers to preserve SPA navigation
 function LoginWrapper() {
@@ -23,6 +24,9 @@ function App() {
         {/* Main Dashboard / Home Screen */}
         <Route path="/" element={<Home />} />
         
+        {/* User Trips Listing Screen */}
+        <Route path="/my-trips" element={<MyTrips />} />
+
         {/* Auth routes */}
         <Route path="/login" element={<LoginWrapper />} />
         <Route path="/register" element={<RegisterWrapper />} />

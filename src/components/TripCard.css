@@ -1,7 +1,33 @@
-/* TripCard.css */
+/* TripCard.css — Supports compact & wide card layouts */
+
+/* ══════════════════════════════════════════════════════════
+   STATUS BADGE COLOR SYSTEM
+   Ongoing:   Stronger #B8C0FF
+   Upcoming:  Light #E7D8FF
+   Completed: Muted light purple/gray #F0EDFF
+   ══════════════════════════════════════════════════════════ */
+.badge-ongoing {
+  background-color: #B8C0FF !important;
+  color: #252238 !important;
+}
+
+.badge-upcoming {
+  background-color: #E7D8FF !important;
+  color: #252238 !important;
+}
+
+.badge-completed {
+  background-color: #F0EDFF !important;
+  color: #6B6880 !important;
+  border: 1px solid #E5E7EB;
+}
+
+/* ══════════════════════════════════════════════════════════
+   COMPACT CARD (Home Dashboard)
+   ══════════════════════════════════════════════════════════ */
 .trip-card {
   flex: 1;
-  background-color: var(--white, #FFFFFF);
+  background-color: #FFFFFF;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(37, 34, 56, 0.04);
@@ -19,11 +45,6 @@
   border-color: #B8C0FF;
 }
 
-.trip-card:focus-visible {
-  box-shadow: 0 0 0 3px rgba(184, 192, 255, 0.6);
-}
-
-/* Image wrapper */
 .trip-image-wrap {
   width: 100%;
   height: 160px;
@@ -42,13 +63,10 @@
   transform: scale(1.04);
 }
 
-/* Badge (status) using light purple E7D8FF */
 .trip-status-badge {
   position: absolute;
   top: 14px;
   right: 14px;
-  background-color: #E7D8FF;
-  color: #252238;
   font-size: 0.72rem;
   font-weight: 700;
   padding: 6px 12px;
@@ -58,7 +76,6 @@
   box-shadow: 0 2px 8px rgba(37, 34, 56, 0.08);
 }
 
-/* Info container */
 .trip-details {
   padding: 18px 20px;
   display: flex;
@@ -86,7 +103,6 @@
   color: #6B6880;
 }
 
-/* Metadata row */
 .trip-meta {
   display: flex;
   align-items: center;
@@ -113,9 +129,197 @@
   font-weight: 500;
 }
 
-/* Responsive adjustments inside row wrapper */
-@media (max-width: 768px) {
-  .trip-image-wrap {
-    height: 140px;
+/* ══════════════════════════════════════════════════════════
+   WIDE HORIZONTAL CARD (My Trips Dashboard)
+   ══════════════════════════════════════════════════════════ */
+.trip-card-wide {
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  border: 1.5px solid rgba(231, 216, 255, 0.5);
+  box-shadow: 0 6px 20px rgba(37, 34, 56, 0.04);
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.trip-card-wide:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(184, 192, 255, 0.25);
+  border-color: #B8C0FF;
+}
+
+/* Image on left for desktop */
+.tc-wide-image-wrap {
+  width: 240px;
+  min-width: 240px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tc-wide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.trip-card-wide:hover .tc-wide-img {
+  transform: scale(1.05);
+}
+
+/* Mobile status badge over image */
+.tc-wide-image-wrap .tc-status-badge {
+  display: none;
+}
+
+/* Content details on right */
+.tc-wide-content {
+  flex: 1;
+  padding: 22px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.tc-wide-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.tc-title-route {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tc-wide-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #252238;
+  letter-spacing: -0.3px;
+}
+
+.tc-wide-route {
+  font-size: 0.90rem;
+  font-weight: 500;
+  color: #6B6880;
+}
+
+.tc-status-badge-desktop {
+  font-size: 0.72rem;
+  font-weight: 750;
+  padding: 6px 14px;
+  border-radius: 30px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+/* Meta pill row */
+.tc-wide-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.tc-meta-pill {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #252238;
+  background-color: #F9F8FF;
+  border: 1px solid #E7D8FF;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.tc-budget-pill {
+  font-weight: 750;
+  color: #252238;
+  background-color: rgba(184, 192, 255, 0.2);
+  border-color: #B8C0FF;
+}
+
+/* Action Buttons */
+.tc-wide-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.tc-btn {
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.tc-btn-primary {
+  background-color: #B8C0FF;
+  color: #252238;
+  box-shadow: 0 2px 8px rgba(184, 192, 255, 0.35);
+}
+
+.tc-btn-primary:hover {
+  background-color: #A3ADFF;
+  transform: translateY(-1px);
+}
+
+.tc-btn-secondary {
+  background-color: #F0EDFF;
+  color: #252238;
+  border: 1px solid #E7D8FF;
+}
+
+.tc-btn-secondary:hover {
+  background-color: #E7D8FF;
+  transform: translateY(-1px);
+}
+
+.tc-btn-danger {
+  background-color: rgba(239, 68, 68, 0.08);
+  color: #EF4444;
+}
+
+.tc-btn-danger:hover {
+  background-color: rgba(239, 68, 68, 0.16);
+  transform: translateY(-1px);
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE LAYOUTS
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 840px) {
+  .trip-card-wide {
+    flex-direction: column;
+  }
+  .tc-wide-image-wrap {
+    width: 100%;
+    height: 180px;
+  }
+  .tc-wide-image-wrap .tc-status-badge {
+    display: block;
+  }
+  .tc-status-badge-desktop {
+    display: none;
+  }
+  .tc-wide-content {
+    padding: 20px 20px;
+  }
+  .tc-wide-actions {
+    flex-wrap: wrap;
+  }
+  .tc-btn {
+    flex: 1;
+    text-align: center;
   }
 }
